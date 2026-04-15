@@ -494,6 +494,15 @@
       font-style: italic;
     }
 
+    .section-subtitle {
+      color: var(--text-secondary-light);
+      font-size: 1.05rem;
+      max-width: 700px;
+      margin: -1.5rem 0 2.5rem 0;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
     /* ABOUT */
     #about {
       background: var(--bg2);
@@ -2072,6 +2081,7 @@
       align-items: center;
       justify-content: center;
       padding: 1rem;
+      overflow-y: auto;
     }
 
     .modal.active {
@@ -2081,25 +2091,41 @@
     .modal-content {
       background: var(--bg2);
       border: 1px solid var(--border);
-      padding: 3rem;
+      padding: 2rem;
       border-radius: 22px;
       max-width: 650px;
       width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
       position: relative;
       animation: slideUp 0.3s ease;
     }
 
+    .modal-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .modal-content::-webkit-scrollbar-track {
+      background: var(--bg3);
+      border-radius: 3px;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 3px;
+    }
+
     .modal-section {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .modal-section-title {
       font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--gold);
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 0.8rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -2121,10 +2147,10 @@
     .modal-tech-tag {
       background: var(--gold-dim);
       color: var(--gold);
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
       font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       border: 1px solid var(--border);
     }
 
@@ -2135,8 +2161,8 @@
 
     .modal-list li {
       color: var(--text-secondary-light);
-      font-size: 0.9rem;
-      padding: 0.5rem 0;
+      font-size: 0.85rem;
+      padding: 0.35rem 0;
       border-bottom: 1px solid rgba(255,255,255,0.05);
       display: flex;
       align-items: center;
@@ -2151,25 +2177,25 @@
     .modal-features {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.8rem;
+      gap: 0.5rem;
     }
 
     .modal-feature {
       background: var(--bg3);
-      padding: 0.8rem;
-      border-radius: 8px;
+      padding: 0.6rem;
+      border-radius: 6px;
       border: 1px solid var(--border);
     }
 
     .modal-feature-title {
       font-family: 'Playfair Display', serif;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--gold);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
     }
 
     .modal-feature-desc {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--text-secondary);
     }
 
@@ -2187,12 +2213,13 @@
 
     .modal-close {
       position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      font-size: 1.5rem;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.3rem;
       cursor: pointer;
       color: var(--muted);
       transition: color 0.3s;
+      z-index: 10;
     }
 
     .modal-close:hover {
@@ -2201,31 +2228,31 @@
 
     .modal-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       color: var(--white);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .modal-meta {
       display: flex;
-      gap: 0.8rem;
+      gap: 0.5rem;
       flex-wrap: wrap;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .modal-meta-item {
       background: var(--bg3);
-      padding: 0.4rem 0.8rem;
-      border-radius: 8px;
-      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
       color: var(--muted);
     }
 
     .modal-desc {
       color: var(--text-secondary-light);
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
     }
 
     /* NEWSLETTER */
@@ -3258,6 +3285,7 @@
   <section id="international">
     <div class="section-label">International Contributions</div>
     <h2 class="section-title">Global <em>Training Impact</em></h2>
+    <p class="section-subtitle">Delivering world-class corporate training and technical education programs across multiple countries — bridging industry expertise with global learners.</p>
     <div class="contrib-grid">
       <div class="contrib-card fade-in">
         <h4>Python Full Stack + Django REST API</h4>
@@ -3613,13 +3641,11 @@
 
       <!-- Project Showcase -->
       <div class="project-showcase">
-        <h4>Featured Student Projects</h4>
+        <h4>Under my Guidance : Featured Student Projects</h4>
+        <h6>Recent projects only added</h6>
         <div class="filter-container">
           <input type="text" id="projectSearch" class="search-box"
             placeholder="Search projects by name or technology...">
-          <button class="filter-btn active" onclick="filterProjects('all')">All</button>
-          <button class="filter-btn" onclick="filterProjects('web')">Web</button>
-          <button class="filter-btn" onclick="filterProjects('business')">Business</button>
         </div>
         
         <div class="project-carousel">
@@ -3628,7 +3654,7 @@
               <!-- Slide 1 -->
               <div class="project-carousel-slide">
                 <div class="project-item" data-category="web"
-                  onclick="openProjectModal('SAFESPACE', 'Women Safety Platform', ['Python', 'AI', 'Safety', '2025'], 'A comprehensive platform for women\'s safety with emergency assistance and integrated support systems.', 'https://github.com/SHEEBHA2212/WOMEN_SAFETY_AI_NEXTGEN.git', ['Python', 'Django', 'Flask', 'TensorFlow', 'OpenCV', 'Twilio', 'Google Maps API', 'PostgreSQL'], ['Real-time Emergency Alert System', 'AI-based Threat Detection', 'GPS Location Tracking', 'Safe Zone Mapping', 'Emergency Contact Management', 'Anonymous Reporting System'], ['Twilio SMS API', 'Google Maps Geocoding API', 'OpenCV Face Detection', 'Firebase Cloud Messaging', 'PayU Payment Gateway'], [{title: 'AI-Powered Safety', desc: 'Machine learning models for threat detection'}, {title: 'Instant SOS', desc: 'One-tap emergency alert to contacts & authorities'}, {title: 'Anonymous Mode', desc: 'Report issues without revealing identity'}])">
+                  onclick="openProjectModal('SAFESPACE', 'Women Safety Platform', ['Python', 'AI', 'Safety', '2025'], 'A comprehensive platform for women\'s safety with emergency assistance and integrated support systems.', '', ['Python', 'Django', 'Flask', 'TensorFlow', 'OpenCV', 'Twilio', 'Google Maps API', 'PostgreSQL'], ['Real-time Emergency Alert System', 'AI-based Threat Detection', 'GPS Location Tracking', 'Safe Zone Mapping', 'Emergency Contact Management', 'Anonymous Reporting System'], ['Twilio SMS API', 'Google Maps Geocoding API', 'OpenCV Face Detection', 'Firebase Cloud Messaging', 'PayU Payment Gateway'], [{title: 'AI-Powered Safety', desc: 'Machine learning models for threat detection'}, {title: 'Instant SOS', desc: 'One-tap emergency alert to contacts & authorities'}, {title: 'Anonymous Mode', desc: 'Report issues without revealing identity'}])">
                   <div class="project-image">
                     <img src="testimonial%20photos/women_safety_ai.gif" alt="SAFESPACE" style="width:100%; height:120px; border-radius:8px; object-fit:cover;">
                   </div>
@@ -3638,19 +3664,19 @@
                     <p style="font-size:0.75rem; color:var(--muted); margin-top:0.5rem;">Python • AI • Safety • 2025</p>
                   </div>
                 </div>
-                <div class="project-item" data-category="business"
-                  onclick="openProjectModal('VoteX', 'Digital College Voting System', ['Java', 'Voting', 'College', '2025'], 'Secure digital voting system for college elections.', 'https://github.com/Prabu-230801133/Final-project.git', ['Java', 'Spring Boot', 'Hibernate', 'MySQL', 'Angular', 'REST API', 'JWT'], ['Secure Authentication System', 'Real-time Vote Counting', 'Candidate Management', 'Voter Verification', 'Election Result Analytics', 'Anti-Rigging Mechanism'], ['Spring Security JWT', 'MySQL Database', 'Angular HttpClient', 'Chart.js for Results', 'Email Notification API'], [{title: 'Anti-Rigging', desc: 'Prevents duplicate votes with OTP verification'}, {title: 'Live Results', desc: 'Real-time election outcome visualization'}, {title: 'Transparency', desc: 'Complete audit trail for all votes'}])">
+                <div class="project-item" data-category="web"
+                  onclick="openProjectModal('VoteX', 'Digital College Voting System', ['Python', 'Django', 'Voting', '2025'], 'Secure digital voting system for college elections built with Python Django.', '', ['Python', 'Django', 'MySQL', 'HTML', 'CSS', 'REST API', 'JWT'], ['Secure Authentication System', 'Real-time Vote Counting', 'Candidate Management', 'Voter Verification', 'Election Result Analytics', 'Anti-Rigging Mechanism'], ['Django Authentication', 'MySQL Database', 'Chart.js for Results', 'Email Notification API'], [{title: 'Anti-Rigging', desc: 'Prevents duplicate votes with OTP verification'}, {title: 'Live Results', desc: 'Real-time election outcome visualization'}, {title: 'Transparency', desc: 'Complete audit trail for all votes'}])">
                   <div class="project-image">
                     <img src="testimonial%20photos/votex_demo%20(1).gif" alt="VoteX" style="width:100%; height:120px; border-radius:8px; object-fit:cover;">
                   </div>
                   <div class="project-info">
                     <h5>VoteX</h5>
                     <p>Digital College Voting System</p>
-                    <p style="font-size:0.75rem; color:var(--muted); margin-top:0.5rem;">Java • Voting • College • 2025</p>
+                    <p style="font-size:0.75rem; color:var(--muted); margin-top:0.5rem;">Python • Django • Voting • 2025</p>
                   </div>
                 </div>
-                <div class="project-item" data-category="business"
-                  onclick="openProjectModal('Smart Scheme', 'Government Scheme Finder', ['React', 'AI', '2025'], 'AI-powered government scheme recommendation system.', '', ['React', 'Node.js', 'Express', 'MongoDB', 'TensorFlow', 'Python', 'REST API'], ['AI-based Scheme Matching', 'Eligibility Checker', 'User Profile Management', 'Scheme Bookmarking', 'Notification System', 'Multi-language Support'], ['政府Data API', 'MyGov API', 'Email/SMS Gateway', 'Authentication API', 'MongoDB Atlas'], [{title: 'Smart Matching', desc: 'AI recommends schemes based on user profile'}, {title: 'Eligibility Filter', desc: 'Auto-check eligibility criteria'}, {title: 'Deadline Alerts', desc: 'Never miss application deadlines'}])">
+                <div class="project-item" data-category="web"
+                  onclick="openProjectModal('Smart Scheme', 'Government Scheme Finder', ['React', 'AI', '2025'], 'AI-powered government scheme recommendation system.', '', ['React', 'Node.js', 'Express', 'MongoDB', 'TensorFlow', 'Python', 'REST API'], ['AI-based Scheme Matching', 'Eligibility Checker', 'User Profile Management', 'Scheme Bookmarking', 'Notification System', 'Multi-language Support'], ['Data API', 'MyGov API', 'Email/SMS Gateway', 'Authentication API', 'MongoDB Atlas'], [{title: 'Smart Matching', desc: 'AI recommends schemes based on user profile'}, {title: 'Eligibility Filter', desc: 'Auto-check eligibility criteria'}, {title: 'Deadline Alerts', desc: 'Never miss application deadlines'}])">
                   <div class="project-image">
                     <img src="testimonial%20photos/smartscheme_5sec.gif" alt="Smart Scheme" style="width:100%; height:120px; border-radius:8px; object-fit:cover;">
                   </div>
@@ -3663,7 +3689,7 @@
               </div>
               <!-- Slide 2 -->
               <div class="project-carousel-slide">
-                <div class="project-item" data-category="business"
+                <div class="project-item" data-category="web"
                   onclick="openProjectModal('Finyx', 'Finance Management', ['Python', 'Finance', '2025'], 'Personal finance management platform.', '', ['Python', 'Django', 'PostgreSQL', 'Chart.js', 'Razorpay API', 'ML Libraries'], ['Expense Tracking', 'Budget Planning', 'Investment Recommendations', 'Bill Reminders', 'Financial Goal Setting', 'Tax Calculation'], ['Razorpay Payment API', 'Google Sheets API', 'Bank Statement Parser', 'Yahoo Finance API', 'Email Notifications'], [{title: 'Smart Insights', desc: 'AI-powered spending analysis'}, {title: 'Indian Focus', desc: 'Customized for Indian financial systems'}, {title: 'Goal Tracker', desc: 'Visual progress toward financial goals'}])">
                   <div class="project-image">
                     <img src="testimonial%20photos/finyx.gif" alt="Finyx" style="width:100%; height:120px; border-radius:8px; object-fit:cover;">
@@ -3685,7 +3711,7 @@
                     <p style="font-size:0.75rem; color:var(--muted); margin-top:0.5rem;">Java • Database • Healthcare • 2025</p>
                   </div>
                 </div>
-                <div class="project-item" data-category="business"
+                <div class="project-item" data-category="web"
                   onclick="openProjectModal('AI Dashboard', 'Job Impact Analysis', ['Power BI', 'AI', '2025'], 'Power BI dashboard for AI job impact analysis.', '', ['Power BI', 'Python', 'Pandas', 'SQL', 'Machine Learning', 'Excel', 'DAX'], ['Job Market Analysis', 'Skill Gap Identification', 'Industry Trends Visualization', 'Salary Benchmarking', 'Future Prediction Model', 'Interactive Dashboards'], ['LinkedIn Job API', 'Indeed API', 'Naukri API', 'Bureau of Labor Statistics', 'Excel Data Connector'], [{title: 'AI Insights', desc: 'ML models predict job market trends'}, {title: 'Interactive Filters', desc: 'Drill-down by industry, role, location'}, {title: 'Gap Analysis', desc: 'Identify skills needed for future roles'}])">
                   <div class="project-image">
                     <img src="testimonial%20photos/ai_dashboard_5sec.gif" alt="AI Dashboard" style="width:100%; height:120px; border-radius:8px; object-fit:cover;">
@@ -4115,25 +4141,6 @@
     });
 
     // ===== NEW FEATURES =====
-
-    // PROJECT SEARCH & FILTER
-    function filterProjects(category) {
-      const items = document.querySelectorAll('#projectGrid .project-item');
-      const buttons = document.querySelectorAll('.filter-btn');
-
-      items.forEach(item => {
-        if (category === 'all' || item.dataset.category === category) {
-          item.style.display = 'flex';
-          setTimeout(() => item.style.opacity = '1', 10);
-        } else {
-          item.style.opacity = '0';
-          setTimeout(() => item.style.display = 'none', 300);
-        }
-      });
-
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-    }
 
     // PROJECT SEARCH
     document.getElementById('projectSearch').addEventListener('keyup', (e) => {
