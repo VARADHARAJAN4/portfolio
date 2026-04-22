@@ -1105,223 +1105,274 @@
       line-height: 1;
     }
 
-     /* GLOBAL TRAINING IMPACT - NEW LIST DESIGN */
+     /* GLOBAL TRAINING IMPACT - SPACE-EFFICIENT DENSE GRID */
      #international {
        background: var(--bg2);
      }
 
-     .training-list {
-       max-width: 1000px;
-       margin: 3rem auto 0;
+     .training-dense-grid {
+       max-width: 1400px;
+       margin: 2.5rem auto 0;
        display: flex;
        flex-direction: column;
-       gap: 1.5rem;
+       gap: 0.75rem;
      }
 
-     .training-item {
-       display: flex;
-       background: linear-gradient(135deg, var(--bg3) 0%, rgba(201, 168, 76, 0.02) 100%);
-       border: 1px solid var(--border);
-       border-radius: 18px;
-       padding: 1.5rem;
-       position: relative;
-       transition: all 0.35s ease;
-       overflow: hidden;
+     .grid-row {
+       display: grid;
+       grid-template-columns: 80px 1fr;
+       gap: 0;
+       align-items: start;
+       opacity: 0;
+       animation: rowFadeIn 0.4s ease forwards;
      }
 
-     .training-item::before {
-       content: '';
-       position: absolute;
-       top: 0;
-       left: 0;
-       width: 3px;
-       height: 100%;
-       background: linear-gradient(to bottom, var(--gold), var(--gold-dim));
-       opacity: 0.6;
-       transition: opacity 0.3s;
+     .grid-row:nth-child(1) { animation-delay: 0.05s; }
+     .grid-row:nth-child(2) { animation-delay: 0.1s; }
+     .grid-row:nth-child(3) { animation-delay: 0.15s; }
+     .grid-row:nth-child(4) { animation-delay: 0.2s; }
+     .grid-row:nth-child(5) { animation-delay: 0.25s; }
+     .grid-row:nth-child(6) { animation-delay: 0.3s; }
+
+     @keyframes rowFadeIn {
+       from { opacity: 0; transform: translateX(-10px); }
+       to { opacity: 1; transform: translateX(0); }
      }
 
-     .training-item:hover {
-       transform: translateX(8px);
-       border-color: var(--gold);
-       box-shadow: 0 8px 30px rgba(201, 168, 76, 0.1);
-       background: linear-gradient(135deg, var(--bg3) 0%, rgba(201, 168, 76, 0.05) 100%);
-     }
-
-     .training-item:hover::before {
-       opacity: 1;
-     }
-
-     .training-item.featured {
-       background: linear-gradient(135deg, rgba(201, 168, 76, 0.06) 0%, var(--bg3) 100%);
-       border-color: rgba(201, 168, 76, 0.3);
-     }
-
-     .training-item.featured:hover {
-       background: linear-gradient(135deg, rgba(201, 168, 76, 0.1) 0%, var(--bg3) 100%);
-       box-shadow: 0 8px 30px rgba(201, 168, 76, 0.18);
-     }
-
-     .item-year-badge {
-       position: absolute;
-       top: -8px;
-       right: 1.5rem;
+     .year-cell {
        font-family: 'Playfair Display', serif;
-       font-size: 0.8rem;
+       font-size: 1rem;
        font-weight: 900;
        color: var(--gold);
-       background: var(--bg3);
-       padding: 0.25rem 0.7rem;
-       border: 1.5px solid var(--gold);
-       border-radius: 20px;
-       box-shadow: 0 2px 10px rgba(201, 168, 76, 0.2);
-       z-index: 10;
+       padding: 0.75rem 0.5rem;
+       text-align: right;
+       border-right: 2px solid var(--gold);
+       opacity: 0.6;
+       position: sticky;
+       left: 0;
+       background: var(--bg2);
+       z-index: 5;
      }
 
-     .item-content {
+     .cards-cell {
        display: grid;
-       grid-template-columns: auto 1fr;
-       gap: 1.2rem;
-       align-items: start;
+       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+       gap: 0.75rem;
+       padding: 0.5rem 0 0.5rem 1.5rem;
+       background: linear-gradient(90deg, 
+         rgba(201, 168, 76, 0.02) 0%, 
+         transparent 30%);
+       border-radius: 0 12px 12px 0;
+       margin-left: 0.25rem;
      }
 
-     .item-header {
+     .dense-card {
+       background: var(--bg3);
+       border: 1px solid var(--border);
+       border-radius: 12px;
+       padding: 1rem 1.2rem;
+       position: relative;
+       transition: all 0.3s ease;
+       display: flex;
+       flex-direction: column;
+       gap: 0.5rem;
+     }
+
+     .dense-card:hover {
+       border-color: var(--gold);
+       background: linear-gradient(135deg, 
+         var(--bg3) 0%, 
+         rgba(201, 168, 76, 0.04) 100%);
+       transform: translateY(-2px);
+       box-shadow: 0 6px 20px rgba(201, 168, 76, 0.1);
+     }
+
+     .dense-card.highlight {
+       background: linear-gradient(135deg, 
+         rgba(201, 168, 76, 0.05) 0%, 
+         var(--bg3) 100%);
+       border-color: rgba(201, 168, 76, 0.25);
+     }
+
+     .dense-card.highlight:hover {
+       border-color: var(--gold);
+       box-shadow: 0 6px 20px rgba(201, 168, 76, 0.2);
+     }
+
+     .dense-header {
        display: flex;
        align-items: center;
-       gap: 0.8rem;
-       margin-bottom: 0.5rem;
+       gap: 0.6rem;
+       margin-bottom: 0.25rem;
      }
 
-     .item-flag {
-       width: 32px;
-       height: 24px;
+     .dense-flag {
+       width: 20px;
+       height: 15px;
        object-fit: cover;
-       border-radius: 4px;
-       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-       border: 1px solid var(--border);
-       transition: transform 0.3s ease;
+       border-radius: 2px;
+       box-shadow: 0 1px 4px rgba(0,0,0,0.2);
      }
 
-     .training-item:hover .item-flag {
-       transform: scale(1.1) rotate(2deg);
-       box-shadow: 0 3px 12px rgba(201, 168, 76, 0.25);
-     }
-
-     .item-title {
+     .dense-header h3 {
        font-family: 'Playfair Display', serif;
-       font-size: 1.25rem;
+       font-size: 0.95rem;
        font-weight: 700;
        color: var(--white);
        margin: 0;
        line-height: 1.3;
      }
 
-     .item-title .subtitle-tech {
+     .dense-subtitle {
        display: block;
        font-family: 'DM Mono', monospace;
-       font-size: 0.75rem;
+       font-size: 0.65rem;
        color: var(--gold);
-       font-weight: 400;
-       letter-spacing: 0.8px;
-       margin-top: 0.2rem;
+       letter-spacing: 0.5px;
+       margin-top: 0.15rem;
      }
 
-     .item-details {
-       grid-column: 2;
+     .dense-meta {
        display: flex;
        flex-wrap: wrap;
-       gap: 0.5rem 0.8rem;
-       margin-bottom: 0.5rem;
+       gap: 0.4rem;
      }
 
-     .detail-pill {
+     .dense-tag {
        font-family: 'DM Mono', monospace;
-       font-size: 0.7rem;
-       padding: 0.3rem 0.65rem;
-       border-radius: 8px;
-       background: rgba(255, 255, 255, 0.05);
+       font-size: 0.62rem;
+       padding: 0.2rem 0.45rem;
+       border-radius: 6px;
+       letter-spacing: 0.2px;
+       background: rgba(255,255,255,0.04);
        border: 1px solid var(--border);
        color: var(--muted);
-       letter-spacing: 0.3px;
-       transition: all 0.2s ease;
      }
 
-     .detail-pill.location {
-       background: rgba(201, 168, 76, 0.12);
-       border-color: rgba(201, 168, 76, 0.3);
-       color: var(--gold);
-       font-weight: 500;
-     }
-
-     .detail-pill.mode {
-       background: rgba(76, 122, 201, 0.12);
-       border-color: rgba(76, 122, 201, 0.3);
-       color: var(--accent);
-     }
-
-     .detail-pill.duration {
-       background: var(--gold-dim);
-       border-color: rgba(201, 168, 76, 0.4);
+     .dense-tag.country {
+       background: rgba(201, 168, 76, 0.1);
+       border-color: rgba(201, 168, 76, 0.25);
        color: var(--gold);
        font-weight: 600;
      }
 
-     .detail-pill.quarter {
-       background: rgba(255, 255, 255, 0.08);
+     .dense-tag.mode {
+       background: rgba(76, 122, 201, 0.1);
+       border-color: rgba(76, 122, 201, 0.25);
+       color: var(--accent);
+     }
+
+     .dense-tag.dur {
+       background: var(--gold-dim);
+       border-color: rgba(201, 168, 76, 0.3);
+       color: var(--gold);
+       font-weight: 700;
+     }
+
+     .dense-tag.quarter {
+       background: rgba(255,255,255,0.06);
        color: var(--text-secondary-light);
      }
 
-     .item-description {
-       grid-column: 2;
+     .dense-desc {
+       font-size: 0.8rem;
        color: var(--text-secondary);
-       font-size: 0.9rem;
-       line-height: 1.6;
+       line-height: 1.45;
        margin: 0;
+       display: -webkit-box;
+       -webkit-line-clamp: 2;
+       -webkit-box-orient: vertical;
+       overflow: hidden;
      }
 
-     .training-item.featured .item-description {
-       color: var(--text-secondary-lighter);
-       font-size: 0.95rem;
+     .dense-footer {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       margin-top: 0.25rem;
      }
 
-     /* Responsive */
+     .dense-audience {
+       font-family: 'DM Mono', monospace;
+       font-size: 0.62rem;
+       color: var(--muted);
+       background: rgba(255,255,255,0.04);
+       padding: 0.2rem 0.5rem;
+       border-radius: 4px;
+     }
+
+     /* RESPONSIVE */
+     @media(max-width: 992px) {
+       .grid-row {
+         grid-template-columns: 70px 1fr;
+         gap: 0.5rem;
+       }
+       
+       .year-cell {
+         font-size: 0.9rem;
+         padding: 0.5rem 0.25rem;
+       }
+       
+       .cards-cell {
+         padding-left: 1rem;
+         gap: 0.6rem;
+       }
+     }
+
      @media(max-width: 768px) {
-       .training-list {
-         gap: 1.2rem;
+       .grid-row {
+         grid-template-columns: 1fr;
+         gap: 0.25rem;
        }
 
-       .training-item {
-         padding: 1.2rem;
-       }
-
-       .item-year-badge {
+       .year-cell {
+         text-align: left;
+         border-right: none;
+         border-bottom: 2px solid var(--gold);
          position: relative;
-         top: 0;
-         right: 0;
-         display: inline-block;
+         left: 0;
+         background: transparent;
+         padding: 0.5rem 0;
          margin-bottom: 0.5rem;
        }
 
-       .item-content {
+       .cards-cell {
+         padding-left: 0;
+         margin-left: 0;
+         background: transparent;
+         border-radius: 0;
+       }
+
+       .dense-card {
+         padding: 0.9rem 1rem;
+         gap: 0.4rem;
+       }
+
+       .dense-header h3 {
+         font-size: 0.9rem;
+       }
+
+       .dense-meta {
+         gap: 0.3rem;
+       }
+
+       .dense-tag {
+         font-size: 0.58rem;
+         padding: 0.15rem 0.35rem;
+       }
+
+       .dense-desc {
+         font-size: 0.78rem;
+       }
+     }
+
+     @media(max-width: 480px) {
+       .cards-cell {
          grid-template-columns: 1fr;
-         gap: 0.8rem;
        }
 
-       .item-details {
-         grid-column: 1;
-       }
-
-       .item-description {
-         grid-column: 1;
-       }
-
-       .item-header {
-         flex-wrap: wrap;
-         gap: 0.5rem;
-       }
-
-       .item-title {
-         font-size: 1.15rem;
+       .dense-card {
+         padding: 0.75rem;
        }
      }
 
@@ -3773,192 +3824,228 @@
      <h2 class="section-title">Global <em>Training Impact</em></h2>
      <p class="section-subtitle">Delivering world-class corporate training and technical education programs across multiple countries — bridging industry expertise with global learners.</p>
      
-     <!-- New Design: Compact Tech-Badge Cards -->
-     <div class="training-list">
-       <div class="training-item">
-         <div class="item-year-badge">2020</div>
-         <div class="item-content">
-           <div class="item-header">
-             <img src="https://flagcdn.com/24x18/us.png" alt="US" class="item-flag">
-             <h3 class="item-title">Java Technologies</h3>
+     <!-- New Design: Space-Efficient Dense Grid -->
+     <div class="training-dense-grid">
+       <!-- Row 1: 2020 -->
+       <div class="grid-row">
+         <div class="year-cell">2020</div>
+         <div class="cards-cell">
+           <div class="dense-card">
+             <div class="dense-header">
+               <img src="https://flagcdn.com/20x15/us.png" alt="US" class="dense-flag">
+               <h3>Java Technologies</h3>
+             </div>
+             <div class="dense-meta">
+               <span class="dense-tag country">🇺🇸 US</span>
+               <span class="dense-tag mode">Online</span>
+               <span class="dense-tag dur">20d</span>
+               <span class="dense-tag quarter">H1</span>
+             </div>
+             <p class="dense-desc">Advanced Java training for Amazon employees.</p>
+             <div class="dense-footer">
+               <span class="dense-audience">Amazon (Employee)</span>
+             </div>
            </div>
-           <div class="item-details">
-             <span class="detail-pill location">🇺🇸 US — Amazon (Employee)</span>
-             <span class="detail-pill mode">Online</span>
-             <span class="detail-pill duration">20 Days</span>
-             <span class="detail-pill quarter">H1 2020</span>
+           
+           <div class="dense-card">
+             <div class="dense-header">
+               <img src="https://flagcdn.com/20x15/us.png" alt="US" class="dense-flag">
+               <h3>Angular & Testing</h3>
+             </div>
+             <div class="dense-meta">
+               <span class="dense-tag country">🇺🇸 US</span>
+               <span class="dense-tag mode">Online</span>
+               <span class="dense-tag dur">45d</span>
+               <span class="dense-tag quarter">H1</span>
+             </div>
+             <p class="dense-desc">Angular & testing concepts for ex-Capgemini job seekers.</p>
+             <div class="dense-footer">
+               <span class="dense-audience">Job Seekers</span>
+             </div>
            </div>
-           <p class="item-description">Advanced Java technologies training delivered to Amazon employees across US batches.</p>
+           
+           <div class="dense-card">
+             <div class="dense-header">
+               <img src="https://flagcdn.com/20x15/jo.png" alt="Jordan" class="dense-flag">
+               <h3>Python Full Stack</h3>
+             </div>
+             <div class="dense-meta">
+               <span class="dense-tag country">🇯🇴 Jordan</span>
+               <span class="dense-tag mode">Online</span>
+               <span class="dense-tag dur">37d</span>
+               <span class="dense-tag quarter">H2</span>
+             </div>
+             <p class="dense-desc">Full-stack Python for Jordan job seekers.</p>
+             <div class="dense-footer">
+               <span class="dense-audience">Job Seekers</span>
+             </div>
+           </div>
          </div>
        </div>
        
-       <div class="training-item">
-         <div class="item-year-badge">2020</div>
-         <div class="item-content">
-           <div class="item-header">
-             <img src="https://flagcdn.com/24x18/us.png" alt="US" class="item-flag">
-             <h3 class="item-title">Angular & Testing Concepts</h3>
+       <!-- Row 2: 2021 -->
+       <div class="grid-row">
+         <div class="year-cell">2021</div>
+         <div class="cards-cell">
+           <div class="dense-card">
+             <div class="dense-header">
+               <img src="https://flagcdn.com/20x15/sg.png" alt="Singapore" class="dense-flag">
+               <h3>Python FS + Django REST</h3>
+             </div>
+             <div class="dense-meta">
+               <span class="dense-tag country">🇸🇬 Singapore</span>
+               <span class="dense-tag mode">Online</span>
+               <span class="dense-tag dur">8d</span>
+               <span class="dense-tag quarter">H1</span>
+             </div>
+             <p class="dense-desc">Django REST APIs for Singapore professionals.</p>
+             <div class="dense-footer">
+               <span class="dense-audience">Professionals</span>
+             </div>
            </div>
-           <div class="item-details">
-             <span class="detail-pill location">🇺🇸 US — Job Seekers (Ex-Capgemini)</span>
-             <span class="detail-pill mode">Online</span>
-             <span class="detail-pill duration">45 Days</span>
-             <span class="detail-pill quarter">H1 2020</span>
+           
+           <div class="dense-card">
+             <div class="dense-header">
+               <img src="https://flagcdn.com/20x15/my.png" alt="Malaysia" class="dense-flag">
+               <h3>React + Node.js + MongoDB</h3>
+             </div>
+             <div class="dense-meta">
+               <span class="dense-tag country">🇲🇾 Malaysia</span>
+               <span class="dense-tag mode">Online</span>
+               <span class="dense-tag dur">6d</span>
+               <span class="dense-tag quarter">H2</span>
+             </div>
+             <p class="dense-desc">MERN stack for technical learners.</p>
+             <div class="dense-footer">
+               <span class="dense-audience">Technical Learners</span>
+             </div>
            </div>
-           <p class="item-description">Comprehensive Angular and testing concepts training for ex-Capgemini job seekers.</p>
          </div>
        </div>
        
-       <div class="training-item">
-         <div class="item-year-badge">2020</div>
-         <div class="item-content">
-           <div class="item-header">
-             <img src="https://flagcdn.com/24x18/jo.png" alt="Jordan" class="item-flag">
-             <h3 class="item-title">Python Full Stack</h3>
+       <!-- Row 3: 2022 -->
+       <div class="grid-row">
+         <div class="year-cell">2022</div>
+         <div class="cards-cell">
+           <div class="dense-card">
+             <div class="dense-header">
+               <img src="https://flagcdn.com/20x15/ae.png" alt="UAE" class="dense-flag">
+               <h3>Microservices<br><span class="dense-subtitle">Spring Boot, Docker, K8s</span></h3>
+             </div>
+             <div class="dense-meta">
+               <span class="dense-tag country">🇦🇪 Dubai</span>
+               <span class="dense-tag mode">Online</span>
+               <span class="dense-tag dur">10d</span>
+               <span class="dense-tag quarter">H1</span>
+             </div>
+             <p class="dense-desc">Cloud-native microservices with containerization & orchestration.</p>
+             <div class="dense-footer">
+               <span class="dense-audience">Software Professionals</span>
+             </div>
            </div>
-           <div class="item-details">
-             <span class="detail-pill location">🇯🇴 Jordan — Job Seekers</span>
-             <span class="detail-pill mode">Online</span>
-             <span class="detail-pill duration">37 Days</span>
-             <span class="detail-pill quarter">H2 2020</span>
+           
+           <div class="dense-card">
+             <div class="dense-header">
+               <img src="https://flagcdn.com/20x15/lk.png" alt="Sri Lanka" class="dense-flag">
+               <h3>Data Analytics<br><span class="dense-subtitle">Python + Power BI</span></h3>
+             </div>
+             <div class="dense-meta">
+               <span class="dense-tag country">🇱🇰 Sri Lanka</span>
+               <span class="dense-tag mode">Offline</span>
+               <span class="dense-tag dur">5d</span>
+               <span class="dense-tag quarter">H2</span>
+             </div>
+             <p class="dense-desc">Python & Power BI for analytics learners.</p>
+             <div class="dense-footer">
+               <span class="dense-audience">Analytics Learners</span>
+             </div>
            </div>
-           <p class="item-description">Python full-stack development training delivered to Jordan-based job seekers.</p>
          </div>
        </div>
        
-       <div class="training-item">
-         <div class="item-year-badge">2021</div>
-         <div class="item-content">
-           <div class="item-header">
-             <img src="https://flagcdn.com/24x18/sg.png" alt="Singapore" class="item-flag">
-             <h3 class="item-title">Python Full Stack + Django REST API</h3>
+       <!-- Row 4: 2023 -->
+       <div class="grid-row">
+         <div class="year-cell">2023</div>
+         <div class="cards-cell">
+           <div class="dense-card">
+             <div class="dense-header">
+               <img src="https://flagcdn.com/20x15/ph.png" alt="Philippines" class="dense-flag">
+               <h3>DevOps<br><span class="dense-subtitle">Git, Jenkins, Docker, CI/CD</span></h3>
+             </div>
+             <div class="dense-meta">
+               <span class="dense-tag country">🇵🇭 Philippines</span>
+               <span class="dense-tag mode">Online</span>
+               <span class="dense-tag dur">7d</span>
+               <span class="dense-tag quarter">H1</span>
+             </div>
+             <p class="dense-desc">CI/CD pipelines & DevOps best practices.</p>
+             <div class="dense-footer">
+               <span class="dense-audience">Engineers</span>
+             </div>
            </div>
-           <div class="item-details">
-             <span class="detail-pill location">🇸🇬 Singapore — Professionals</span>
-             <span class="detail-pill mode">Online</span>
-             <span class="detail-pill duration">8 Days</span>
-             <span class="detail-pill quarter">H1 2021</span>
-           </div>
-           <p class="item-description">Full-stack Python program with Django REST APIs delivered to Singapore professionals.</p>
          </div>
        </div>
        
-       <div class="training-item">
-         <div class="item-year-badge">2021</div>
-         <div class="item-content">
-           <div class="item-header">
-             <img src="https://flagcdn.com/24x18/my.png" alt="Malaysia" class="item-flag">
-             <h3 class="item-title">React + Node.js + MongoDB (MERN)</h3>
+       <!-- Row 5: 2024 -->
+       <div class="grid-row">
+         <div class="year-cell">2024</div>
+         <div class="cards-cell">
+           <div class="dense-card">
+             <div class="dense-header">
+               <img src="https://flagcdn.com/20x15/th.png" alt="Thailand" class="dense-flag">
+               <h3>Java Full Stack<br><span class="dense-subtitle">Spring Boot + Microservices</span></h3>
+             </div>
+             <div class="dense-meta">
+               <span class="dense-tag country">🇹🇭 Thailand</span>
+               <span class="dense-tag mode">Online</span>
+               <span class="dense-tag dur">9d</span>
+               <span class="dense-tag quarter">H1</span>
+             </div>
+             <p class="dense-desc">Enterprise Java full-stack & microservices.</p>
+             <div class="dense-footer">
+               <span class="dense-audience">College Learners</span>
+             </div>
            </div>
-           <div class="item-details">
-             <span class="detail-pill location">🇲🇾 Malaysia — Technical Learners</span>
-             <span class="detail-pill mode">Online</span>
-             <span class="detail-pill duration">6 Days</span>
-             <span class="detail-pill quarter">H2 2021</span>
-           </div>
-           <p class="item-description">MERN stack training for technical learners and aspiring full-stack engineers.</p>
          </div>
        </div>
        
-       <div class="training-item">
-         <div class="item-year-badge">2022</div>
-         <div class="item-content">
-           <div class="item-header">
-             <img src="https://flagcdn.com/24x18/ae.png" alt="UAE" class="item-flag">
-             <h3 class="item-title">Microservices<br><span class="subtitle-tech">Spring Boot, Docker, Kubernetes</span></h3>
+       <!-- Row 6: 2025 -->
+       <div class="grid-row">
+         <div class="year-cell">2025</div>
+         <div class="cards-cell">
+           <div class="dense-card highlight">
+             <div class="dense-header">
+               <img src="https://flagcdn.com/20x15/id.png" alt="Indonesia" class="dense-flag">
+               <h3>AI Prompt Engineering<br><span class="dense-subtitle">LLM Integration</span></h3>
+             </div>
+             <div class="dense-meta">
+               <span class="dense-tag country">🇮🇩 Indonesia</span>
+               <span class="dense-tag mode">Online</span>
+               <span class="dense-tag dur">4d</span>
+               <span class="dense-tag quarter">H1</span>
+             </div>
+             <p class="dense-desc">Prompt engineering & LLM integration.</p>
+             <div class="dense-footer">
+               <span class="dense-audience">AI Practitioners</span>
+             </div>
            </div>
-           <div class="item-details">
-             <span class="detail-pill location">🇦🇪 UAE — Software Professionals</span>
-             <span class="detail-pill mode">Online</span>
-             <span class="detail-pill duration">10 Days</span>
-             <span class="detail-pill quarter">H1 2022</span>
+           
+           <div class="dense-card highlight">
+             <div class="dense-header">
+               <img src="https://flagcdn.com/20x15/np.png" alt="Nepal" class="dense-flag">
+               <h3>Cloud Deployment<br><span class="dense-subtitle">Render, PM2, GitHub Actions</span></h3>
+             </div>
+             <div class="dense-meta">
+               <span class="dense-tag country">🇳🇵 Nepal</span>
+               <span class="dense-tag mode">Offline</span>
+               <span class="dense-tag dur">5d</span>
+               <span class="dense-tag quarter">H2</span>
+             </div>
+             <p class="dense-desc">Cloud deployment & DevOps automation.</p>
+             <div class="dense-footer">
+               <span class="dense-audience">Cloud Teams</span>
+             </div>
            </div>
-           <p class="item-description">Cloud-native microservices training with Spring Boot, containerization, and orchestration.</p>
-         </div>
-       </div>
-       
-       <div class="training-item">
-         <div class="item-year-badge">2022</div>
-         <div class="item-content">
-           <div class="item-header">
-             <img src="https://flagcdn.com/24x18/lk.png" alt="Sri Lanka" class="item-flag">
-             <h3 class="item-title">Data Analytics<br><span class="subtitle-tech">Python + Power BI</span></h3>
-           </div>
-           <div class="item-details">
-             <span class="detail-pill location">🇱🇰 Sri Lanka — Analytics Learners</span>
-             <span class="detail-pill mode">Offline</span>
-             <span class="detail-pill duration">5 Days</span>
-             <span class="detail-pill quarter">H2 2022</span>
-           </div>
-           <p class="item-description">Data analytics combining Python and Power BI for business intelligence teams.</p>
-         </div>
-       </div>
-       
-       <div class="training-item">
-         <div class="item-year-badge">2023</div>
-         <div class="item-content">
-           <div class="item-header">
-             <img src="https://flagcdn.com/24x18/ph.png" alt="Philippines" class="item-flag">
-             <h3 class="item-title">DevOps<br><span class="subtitle-tech">Git, Jenkins, Docker, CI/CD</span></h3>
-           </div>
-           <div class="item-details">
-             <span class="detail-pill location">🇵🇭 Philippines — Engineers</span>
-             <span class="detail-pill mode">Online</span>
-             <span class="detail-pill duration">7 Days</span>
-             <span class="detail-pill quarter">H1 2023</span>
-           </div>
-           <p class="item-description">CI/CD pipelines, Git workflows, Jenkins, and Docker best practices training.</p>
-         </div>
-       </div>
-       
-       <div class="training-item">
-         <div class="item-year-badge">2024</div>
-         <div class="item-content">
-           <div class="item-header">
-             <img src="https://flagcdn.com/24x18/th.png" alt="Thailand" class="item-flag">
-             <h3 class="item-title">Java Full Stack<br><span class="subtitle-tech">Spring Boot + Microservices</span></h3>
-           </div>
-           <div class="item-details">
-             <span class="detail-pill location">🇹🇭 Thailand — College Learners</span>
-             <span class="detail-pill mode">Online</span>
-             <span class="detail-pill duration">9 Days</span>
-             <span class="detail-pill quarter">H1 2024</span>
-           </div>
-           <p class="item-description">Enterprise Java full-stack, Spring Boot, and microservices training for college students.</p>
-         </div>
-       </div>
-       
-       <div class="training-item featured">
-         <div class="item-year-badge">2025</div>
-         <div class="item-content">
-           <div class="item-header">
-             <img src="https://flagcdn.com/24x18/id.png" alt="Indonesia" class="item-flag">
-             <h3 class="item-title">AI Prompt Engineering<br><span class="subtitle-tech">LLM Integration</span></h3>
-           </div>
-           <div class="item-details">
-             <span class="detail-pill location">🇮🇩 Indonesia — AI Practitioners</span>
-             <span class="detail-pill mode">Online</span>
-             <span class="detail-pill duration">4 Days</span>
-             <span class="detail-pill quarter">H1 2025</span>
-           </div>
-           <p class="item-description">AI prompt engineering and LLM integration training for practitioners and developers.</p>
-         </div>
-       </div>
-       
-       <div class="training-item featured">
-         <div class="item-year-badge">2025</div>
-         <div class="item-content">
-           <div class="item-header">
-             <img src="https://flagcdn.com/24x18/np.png" alt="Nepal" class="item-flag">
-             <h3 class="item-title">Cloud Deployment<br><span class="subtitle-tech">Render, PM2, GitHub Actions</span></h3>
-           </div>
-           <div class="item-details">
-             <span class="detail-pill location">🇳🇵 Nepal — Cloud Teams</span>
-             <span class="detail-pill mode">Offline</span>
-             <span class="detail-pill duration">5 Days</span>
-             <span class="detail-pill quarter">H2 2025</span>
-           </div>
-           <p class="item-description">Cloud deployment training covering Render, PM2, and GitHub Actions for teams.</p>
          </div>
        </div>
      </div>
