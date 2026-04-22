@@ -1137,13 +1137,24 @@
       margin-bottom: 0.95rem;
     }
 
-    .contrib-meta span {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--muted);
-      padding: 0.35rem 0.7rem;
-      border-radius: 12px;
-      font-size: 0.78rem;
-    }
+     .contrib-meta span {
+       background: rgba(255, 255, 255, 0.05);
+       color: var(--muted);
+       padding: 0.35rem 0.7rem;
+       border-radius: 12px;
+       font-size: 0.78rem;
+       display: inline-flex;
+       align-items: center;
+       gap: 0.35rem;
+     }
+
+     .country-flag {
+       width: 18px;
+       height: 14px;
+       object-fit: cover;
+       border-radius: 2px;
+       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+     }
 
     .contrib-desc {
       color: var(--text-secondary);
@@ -3230,8 +3241,23 @@
   <section id="training">
     <div class="section-label">Corporate Training</div>
     <h2 class="section-title">Training <em>Portfolio</em></h2>
-    <div class="timeline">
-      <div class="tl-item">
+<div class="timeline">
+       <div class="tl-item">
+         <div class="tl-dot"></div>
+         <div class="tl-date">H1 2020</div>
+         <div class="tl-org">Amazon</div>
+         <div class="tl-role">Java Technologies</div>
+         <div class="tl-role">Amazon (Employee)</div>
+         <div class="tl-desc">US, Online, 20 Days</div>
+       </div>
+       <div class="tl-item">
+         <div class="tl-dot"></div>
+         <div class="tl-date">H1 2020</div>
+         <div class="tl-org">Job Seekers (Ex-Capgemini Employee)</div>
+         <div class="tl-role">Angular and Testing Concepts</div>
+         <div class="tl-desc">US, Online, 45 Days</div>
+       </div>
+       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-date">Nov 2023 — Present</div>
         <div class="tl-org">Edunet Foundation</div>
@@ -3303,83 +3329,68 @@
 
   </section>
 
-  <section id="international">
-    <div class="section-label">International Contributions</div>
-    <h2 class="section-title">Global <em>Training Impact</em></h2>
-    <p class="section-subtitle">Delivering world-class corporate training and technical education programs across multiple countries — bridging industry expertise with global learners.</p>
-    <div class="contrib-grid">
-      <div class="contrib-card fade-in">
-        <h4>Python Full Stack + Django REST API</h4>
-        <div class="contrib-meta"><span>Singapore</span><span>Online</span><span>8 Days</span><span>H1
-            2021</span><span>Audience: Singapore professionals</span></div>
-        <div class="contrib-desc">Delivered a full-stack Python program with Django REST APIs focused on global learners
-          working in Singapore.</div>
-      </div>
-      <div class="contrib-card fade-in">
-        <h4>React + Node.js + MongoDB (MERN)</h4>
-        <div class="contrib-meta"><span>Malaysia</span><span>Online</span><span>6 Days</span><span>H2
-            2021</span><span>Audience: Malaysia technical learners</span></div>
-        <div class="contrib-desc">Delivered MERN stack training for international development teams and aspiring
-          full-stack engineers in Malaysia.</div>
-      </div>
-      <div class="contrib-card fade-in">
-        <h4>Microservices with Spring Boot + Docker + Kubernetes</h4>
-        <div class="contrib-meta"><span>UAE (Dubai)</span><span>Online</span><span>10 Days</span><span>H1
-            2022</span><span>Audience: Dubai software professionals</span></div>
-        <div class="contrib-desc">Delivered cloud-native microservices training to a Dubai-based audience, focusing on
-          Spring Boot, containerization and orchestration.</div>
-      </div>
-      <div class="contrib-card fade-in">
-        <h4>Data Analytics with Python + Power BI</h4>
-        <div class="contrib-meta"><span>Sri Lanka</span><span>Offline</span><span>5 Days</span><span>H2
-            2022</span><span>Audience: Sri Lanka analytics learners</span></div>
-        <div class="contrib-desc">Delivered data analytics training combining Python and Power BI to support business
-          intelligence teams in the Sri Lanka.</div>
-      </div>
-      <div class="contrib-card fade-in">
-        <h4>DevOps: Git, Jenkins, Docker, CI/CD Pipelines</h4>
-        <div class="contrib-meta"><span>Philippines</span><span>Online</span><span>7 Days</span><span>H1
-            2023</span><span>Audience: Philippines engineers</span></div>
-        <div class="contrib-desc">Delivered in-person DevOps training covering Git workflows, Jenkins pipelines, Docker,
-          and CI/CD best practices.</div>
-      </div>
-      <div class="contrib-card fade-in">
-        <h4>Angular 15 + TypeScript + Testing (Karma, Jasmine)</h4>
-        <div class="contrib-meta"><span>Jordan</span><span>Online</span><span>6 Days</span><span>H2
-            2023</span><span>Audience: Jordan software professionals</span></div>
-        <div class="contrib-desc">Delivered advanced Angular training focused on modern front-end development and
-          testing for Jordan learners.</div>
-      </div>
-      <div class="contrib-card fade-in">
-        <h4>Java Full Stack + Spring Boot + Microservices + Cloud Hosting</h4>
-        <div class="contrib-meta"><span>Thailand</span><span>Online</span><span>9 Days</span><span>H1
-            2024</span><span>Audience: Thailand College learners</span></div>
-        <div class="contrib-desc">Delivered in-person Java full-stack, microservices and cloud hosting training
-          supporting enterprise learners in Thailand.</div>
-      </div>
-      <div class="contrib-card fade-in">
-        <h4>Java Full Stack + Spring Boot + Microservices + Cloud Hosting</h4>
-        <div class="contrib-meta"><span>Thailand</span><span>Offline</span><span>10 Days</span><span>H2
-            2024</span><span>Audience: Thailand corporate teams</span></div>
-        <div class="contrib-desc">Delivered in-person Java full-stack, microservices and cloud hosting training
-          supporting enterprise learners in Thailand.</div>
-      </div>
-      <div class="contrib-card fade-in">
-        <h4>AI Prompt Engineering + LLM Integration</h4>
-        <div class="contrib-meta"><span>Indonesia</span><span>Online</span><span>4 Days</span><span>H1
-            2025</span><span>Audience: Indonesia AI practitioners</span></div>
-        <div class="contrib-desc">Delivered AI prompt engineering and LLM integration training to Indonesia-based
-          practitioners and developers.</div>
-      </div>
-      <div class="contrib-card fade-in">
-        <h4>Cloud Deployment + Render + PM2 + GitHub Actions</h4>
-        <div class="contrib-meta"><span>Nepal</span><span>Offline</span><span>5 Days</span><span>H2
-            2025</span><span>Audience: Nepal cloud teams</span></div>
-        <div class="contrib-desc">Delivered cloud deployment training with Render, PM2, and GitHub Actions for Nepali
-          teams and producers.</div>
-      </div>
-    </div>
-  </section>
+   <section id="international">
+     <div class="section-label"><b>International Contributions</b></div>
+     <h2 class="section-title">Global <em>Training Impact</em></h2>
+     <p class="section-subtitle">Delivering world-class corporate training and technical education programs across multiple countries — bridging industry expertise with global learners.</p>
+     <div class="contrib-grid">
+       <div class="contrib-card fade-in">
+         <h4>Java Technologies</h4>
+         <div class="contrib-meta"><span><img src="https://flagcdn.com/16x12/us.png" alt="US" class="country-flag"> US</span><span>Online</span><span>20 Days</span><span>H1 2020</span><span>Audience: Amazon (Employee)</span></div>
+         <div class="contrib-desc">Delivered advanced Java technologies training to Amazon employees across US batches.</div>
+       </div>
+       <div class="contrib-card fade-in">
+         <h4>Angular and Testing Concepts</h4>
+         <div class="contrib-meta"><span><img src="https://flagcdn.com/16x12/us.png" alt="US" class="country-flag"> US</span><span>Online</span><span>45 Days</span><span>H1 2020</span><span>Audience: Job Seekers (Ex-Capgemini Employee)</span></div>
+         <div class="contrib-desc">Conducted comprehensive Angular and testing concepts training for ex-Capgemini job seekers in the US.</div>
+       </div>
+       <div class="contrib-card fade-in">
+         <h4>Python Full Stack</h4>
+         <div class="contrib-meta"><span><img src="https://flagcdn.com/16x12/jo.png" alt="Jordan" class="country-flag"> Jordan</span><span>Online</span><span>37 Days</span><span>H2 2020</span><span>Audience: Job Seekers</span></div>
+         <div class="contrib-desc">Delivered Python full-stack development training to Jordan-based job seekers.</div>
+       </div>
+       <div class="contrib-card fade-in">
+         <h4>Python Full Stack + Django REST API</h4>
+         <div class="contrib-meta"><span><img src="https://flagcdn.com/16x12/sg.png" alt="Singapore" class="country-flag"> Singapore</span><span>Online</span><span>8 Days</span><span>H1 2021</span><span>Audience: Professionals</span></div>
+         <div class="contrib-desc">Delivered full-stack Python program with Django REST APIs to Singapore professionals.</div>
+       </div>
+       <div class="contrib-card fade-in">
+         <h4>React + Node.js + MongoDB (MERN)</h4>
+         <div class="contrib-meta"><span><img src="https://flagcdn.com/16x12/my.png" alt="Malaysia" class="country-flag"> Malaysia</span><span>Online</span><span>6 Days</span><span>H2 2021</span><span>Audience: Technical Learners</span></div>
+         <div class="contrib-desc">Conducted MERN stack training for technical learners and aspiring full-stack engineers in Malaysia.</div>
+       </div>
+       <div class="contrib-card fade-in">
+         <h4>Microservices (Spring Boot, Docker, Kubernetes)</h4>
+         <div class="contrib-meta"><span><img src="https://flagcdn.com/16x12/ae.png" alt="UAE" class="country-flag"> UAE (Dubai)</span><span>Online</span><span>10 Days</span><span>H1 2022</span><span>Audience: Software Professionals</span></div>
+         <div class="contrib-desc">Delivered cloud-native microservices training with Spring Boot, Docker, and Kubernetes to Dubai software professionals.</div>
+       </div>
+       <div class="contrib-card fade-in">
+         <h4>Data Analytics (Python + Power BI)</h4>
+         <div class="contrib-meta"><span><img src="https://flagcdn.com/16x12/lk.png" alt="Sri Lanka" class="country-flag"> Sri Lanka</span><span>Offline</span><span>5 Days</span><span>H2 2022</span><span>Audience: Analytics Learners</span></div>
+         <div class="contrib-desc">Delivered data analytics training combining Python and Power BI for analytics learners in Sri Lanka.</div>
+       </div>
+       <div class="contrib-card fade-in">
+         <h4>DevOps (Git, Jenkins, Docker, CI/CD)</h4>
+         <div class="contrib-meta"><span><img src="https://flagcdn.com/16x12/ph.png" alt="Philippines" class="country-flag"> Philippines</span><span>Online</span><span>7 Days</span><span>H1 2023</span><span>Audience: Engineers</span></div>
+         <div class="contrib-desc">Conducted DevOps training covering Git, Jenkins, Docker, and CI/CD pipelines for engineers in the Philippines.</div>
+       </div>
+       <div class="contrib-card fade-in">
+         <h4>Java Full Stack + Spring Boot + Microservices</h4>
+         <div class="contrib-meta"><span><img src="https://flagcdn.com/16x12/th.png" alt="Thailand" class="country-flag"> Thailand</span><span>Online</span><span>9 Days</span><span>H1 2024</span><span>Audience: College Learners</span></div>
+         <div class="contrib-desc">Delivered Java full-stack, Spring Boot, and microservices training to college learners in Thailand.</div>
+       </div>
+       <div class="contrib-card fade-in">
+         <h4>AI Prompt Engineering + LLM Integration</h4>
+         <div class="contrib-meta"><span><img src="https://flagcdn.com/16x12/id.png" alt="Indonesia" class="country-flag"> Indonesia</span><span>Online</span><span>4 Days</span><span>H1 2025</span><span>Audience: AI Practitioners</span></div>
+         <div class="contrib-desc">Delivered AI prompt engineering and LLM integration training to AI practitioners in Indonesia.</div>
+       </div>
+       <div class="contrib-card fade-in">
+         <h4>Cloud Deployment (Render, PM2, GitHub Actions)</h4>
+         <div class="contrib-meta"><span><img src="https://flagcdn.com/16x12/np.png" alt="Nepal" class="country-flag"> Nepal</span><span>Offline</span><span>5 Days</span><span>H2 2025</span><span>Audience: Cloud Teams</span></div>
+         <div class="contrib-desc">Delivered cloud deployment training with Render, PM2, and GitHub Actions for cloud teams in Nepal.</div>
+       </div>
+     </div>
+   </section>
 
   <!-- CERTIFICATIONS -->
   <section id="certs">
@@ -4077,15 +4088,15 @@
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
 
-    // TYPEWRITER
-    const roles = [
-      'Full Stack Developer',
-      'Corporate Trainer & Educator',
-      'AI Training & Development Expert',
-      'Python - AI & ML Trainer',
-      'DevOps & Cloud Instructor',
-      'Spring Boot Architect',
-    ];
+     // TYPEWRITER
+     const roles = [
+       'Full Stack Developer',
+       'Corporate Trainer & Educator',
+       'AI Training & Development Expert',
+       'Python - AI & ML Trainer',
+       'DevOps & Cloud Instructor',
+       'Spring Boot Architect',
+     ];
     let rIdx = 0, cIdx = 0, isDeleting = false;
     const tw = document.getElementById('typewriter');
     function type() {
