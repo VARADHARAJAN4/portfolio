@@ -305,25 +305,25 @@
       object-fit: cover;
     }
 
-    .hero-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--gold);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
+      .hero-tag {
+        font-family: 'DM Mono', monospace;
+        font-size: 0.72rem;
+        color: var(--gold);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
 
-    .hero-tag::before {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 1px;
-      background: var(--gold);
-    }
+     .hero-tag::before {
+       content: '';
+       display: block;
+       width: 40px;
+       height: 1px;
+       background: var(--gold);
+     }
 
     h1.hero-name {
       font-family: 'Playfair Display', serif;
@@ -408,7 +408,7 @@
       display: flex;
       gap: 3rem;
       margin-bottom: 3rem;
-      flex-wrap: wrap;
+      /*flex-wrap: wrap;*/
     }
 
     .stat {
@@ -1650,7 +1650,7 @@
          position: relative;
          left: 0;
          top: 0;
-         margin-bottom: 1.5rem;
+       margin-bottom: 0.5rem;
          display: inline-block;
        }
 
@@ -2984,11 +2984,12 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    .bot-btn:hover {
-      background: var(--gold);
-      color: var(--bg);
-    }
-  </style>
+     .bot-btn:hover {
+       background: var(--gold);
+       color: var(--bg);
+     }
+
+    </style>
 </head>
 
 <body>
@@ -3111,6 +3112,10 @@
         <div class="stat">
           <div class="stat-num" data-target="19">0</div>
           <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-target="10">0</div>
+          <div class="stat-label">International Training Sessions</div>
         </div>
         <div class="stat">
           <div class="stat-num" data-target="10">0</div>
