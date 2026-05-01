@@ -226,24 +226,17 @@
       transform: scaleX(1);
     }
 
-    /* HERO */
-     #hero {
-       min-height: 100vh;
-       display: flex;
-       align-items: center;
-       padding: 8rem 3rem 4rem;
-       position: relative;
-       overflow: hidden;
-       isolation: isolate;
-     }
-
-    #hero {
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      align-items: center;
-      gap: 3rem;
-    }
+/* HERO */
+#hero {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: 3rem;
+  z-index: 20;
+  overflow: visible;
+}
 
     .hero-grid-bg {
       position: absolute;
@@ -325,15 +318,16 @@
        background: var(--gold);
      }
 
-    h1.hero-name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      font-weight: 900;
-      line-height: 0.9;
-      letter-spacing: -2px;
-      margin-bottom: 1.5rem;
-      color: var(--white);
-    }
+     h1.hero-name {
+       font-family: 'Playfair Display', serif;
+       font-size: clamp(2.5rem, 4vw, 3.5rem);
+       font-weight: 900;
+       line-height: 0.9;
+       letter-spacing: -2px;
+       margin-bottom: 1.5rem;
+       color: var(--white);
+       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+     }
 
     h1.hero-name span {
       color: var(--gold);
@@ -3749,6 +3743,59 @@
     <div class="section-label">Corporate Training</div>
     <h2 class="section-title">Training <em>Portfolio</em></h2>
 <div class="timeline">
+   <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Nov 2023 — Present</div>
+        <div class="tl-org">Edunet Foundation</div>
+        <div class="tl-role">Technical Master Trainer</div>
+        <div class="tl-role">Working under Projects - Corporate CSR funds, EY Skills, VOIS Program, IBM Skills, Nan Mudhalvan Prgram, Youth Employability and AICTE Internship & Project</div>
+        <div class="tl-desc">Cloud (Azure, Render & Heroku), Python full stack with AI, AI trainer, MERN full stack,
+          DevOps trainer, DB tools trainer (MySQL, Oracle, MS SQL Server, MongoDB, PostgreSQL). Worked on EY NextGen
+          Employability Program, VOIS program, and TechSkills projects.</div>
+      </div>
+
+      <div class="tl-item">
+         <div class="tl-dot"></div>
+         <div class="tl-date">July 2024</div>
+         <div class="tl-org">Infosys, Bangalore</div>
+         <div class="tl-role">Corporate Trainer(Freelancer) — 10 Days</div>
+         <div class="tl-desc">Cloud Technology – Render Cloud Platform, DevOps monitoring with PM2, CI/CD with Git &
+           GitHub.</div>
+       </div>
+
+<div class="tl-item">
+         <div class="tl-dot"></div>
+         <div class="tl-date">December 2024</div>
+         <div class="tl-org">Matrixx</div>
+         <div class="tl-role">Freelancer Trainer — 8 Days</div>
+         <div class="tl-desc">Matrixx operation training program-Matrixx Foundation, Technical basics, DevOps Integration Module, Monitoring & Observability, Real-Time Industry Use Cases.</div>
+       </div>
+       <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Feb 2022 — Oct 2023</div>
+        <div class="tl-org">EduBridge Learning, Mumbai</div>
+        <div class="tl-role">Master Trainer - 1.8 years</div>
+        <div class="tl-role">Working under Projects - Corporate CSR funds, Capgemini Digital Academy Program (DAP),Infosys Employability Program,Women in Tech Program and Career Readiness Program</div>
+
+        <div class="tl-desc">Java Full Stack and MERN Full Stack training as Master Trainer — comprehensive curriculum
+          delivery, mentoring, and CSR project work under Capgemini.</div>
+      </div>
+ <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Dec 2021</div>
+        <div class="tl-org">Siemens Technology India</div>
+        <div class="tl-role">Corporate Trainer(Freelancer) - 33 Days</div>
+        <div class="tl-desc">AngularJS and testing concepts including Protractor, Karma, Mocha, and Jasmine — for
+          professional engineers at Siemens.</div>
+      </div>
+        <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">August 2020 — March 2021</div>
+        <div class="tl-org">Job Seekers — Jordan, USA, India</div>
+        <div class="tl-role">Online Corporate Trainer (Freelancer)-8 Months</div>
+        <div class="tl-desc">Angular, React, MySQL, Oracle, PostgreSQL, Python, Selenium, Cucumber, Gherkin, and JUnit —
+          comprehensive global training.</div>
+      </div>
        <div class="tl-item">
          <div class="tl-dot"></div>
          <div class="tl-date">H1 2020</div>
@@ -3764,31 +3811,6 @@
          <div class="tl-role">Angular and Testing Concepts</div>
          <div class="tl-desc">US, Online, 45 Days</div>
        </div>
-       <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">Nov 2023 — Present</div>
-        <div class="tl-org">Edunet Foundation</div>
-        <div class="tl-role">Technical Master Trainer</div>
-        <div class="tl-role">Working under Projects - Corporate CSR funds, EY Skills, VOIS Program, IBM Skills, Nan Mudhalvan Prgram, Youth Employability and AICTE Internship & Project</div>
-        <div class="tl-desc">Cloud (Azure, Render & Heroku), Python full stack with AI, AI trainer, MERN full stack,
-          DevOps trainer, DB tools trainer (MySQL, Oracle, MS SQL Server, MongoDB, PostgreSQL). Worked on EY NextGen
-          Employability Program, VOIS program, and TechSkills projects.</div>
-      </div>
-       <div class="tl-item">
-         <div class="tl-dot"></div>
-         <div class="tl-date">July 2024</div>
-         <div class="tl-org">Infosys, Bangalore</div>
-         <div class="tl-role">Corporate Trainer(Freelancer) — 10 Days</div>
-         <div class="tl-desc">Cloud Technology – Render Cloud Platform, DevOps monitoring with PM2, CI/CD with Git &
-           GitHub.</div>
-       </div>
-       <div class="tl-item">
-         <div class="tl-dot"></div>
-         <div class="tl-date">December 2024</div>
-         <div class="tl-org">Matrixx</div>
-         <div class="tl-role">Freelancer Trainer — 8 Days</div>
-         <div class="tl-desc">Matrixx operation training program-Matrixx Foundation, Technical basics, DevOps Integration Module, Monitoring & Observability, Real-Time Industry Use Cases.</div>
-       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-date">March 2020 — April 2020</div>
@@ -3797,40 +3819,16 @@
         <div class="tl-desc">Java (intermediate level), Selenium, Cucumber and Mockito coaching for US-based learners.
         </div>
       </div>
+      
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-date">Feb 2022 — Oct 2023</div>
-        <div class="tl-org">EduBridge Learning, Mumbai</div>
-        <div class="tl-role">Master Trainer - 1.8 years</div>
-        <div class="tl-role">Working under Projects - Corporate CSR funds, Capgemini Digital Academy Program (DAP),Infosys Employability Program,Women in Tech Program and Career Readiness Program</div>
-
-        <div class="tl-desc">Java Full Stack and MERN Full Stack training as Master Trainer — comprehensive curriculum
-          delivery, mentoring, and CSR project work under Capgemini.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">1 Month</div>
-        <div class="tl-org">Siemens Technology India</div>
-        <div class="tl-role">Corporate Trainer(Freelancer) - 33 Days</div>
-        <div class="tl-desc">AngularJS and testing concepts including Protractor, Karma, Mocha, and Jasmine — for
-          professional engineers at Siemens.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">1.5 Months</div>
+        <div class="tl-date">October 2020</div>
         <div class="tl-org">Ex-Capgemini Employees (USA)</div>
         <div class="tl-role">Online Corporate Trainer(Freelancer) - 45 days</div>
         <div class="tl-desc">Angular and testing with Karma, Mocha, and Jasmine — upskilling professionals transitioning
           between roles in the USA.</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">8 Months</div>
-        <div class="tl-org">Job Seekers — Jordan, USA, India</div>
-        <div class="tl-role">Online Corporate Trainer (Freelancer)-8 Months</div>
-        <div class="tl-desc">Angular, React, MySQL, Oracle, PostgreSQL, Python, Selenium, Cucumber, Gherkin, and JUnit —
-          comprehensive global training.</div>
-      </div>
+    
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-date">Aug 2008 — Dec 2013</div>
