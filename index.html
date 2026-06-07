@@ -5,9 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Varadharajan A — Full Stack Trainer & Developer</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&display=swap"
-    rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+    </script>
   <style>
     :root {
        --bg: #0a0a0f;
@@ -2272,6 +2274,109 @@
       padding: 0.2rem 0.6rem;
     }
 
+    /* PARTNERSHIPS */
+    #partnerships {
+      background: var(--bg);
+    }
+
+    .partnerships-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .partnership-category {
+      margin-bottom: 3rem;
+    }
+
+    .partnership-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .partnership-category-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .partnership-category-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .partnership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .partnership-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .partnership-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(201, 168, 76, 0.15);
+    }
+
+    .partnership-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .partnership-card:hover::before {
+      opacity: 1;
+    }
+
+    .partnership-card.highlight {
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.08), var(--bg2));
+      border-color: rgba(201, 168, 76, 0.3);
+    }
+
+    .partnership-card.highlight:hover {
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), var(--bg2));
+      box-shadow: 0 15px 40px rgba(201, 168, 76, 0.25);
+    }
+
+    .partnership-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin: 0 0 0.3rem 0;
+      line-height: 1.3;
+    }
+
+    .partnership-location {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
     /* CONTACT */
     #contact {
       background: var(--bg);
@@ -2862,10 +2967,76 @@
       }
     }
 
-    .bounce {
-      animation: bounce 0.6s ease infinite;
-    }
-    /* CHATBOT ASSISTANT */
+     .bounce {
+       animation: bounce 0.6s ease infinite;
+     }
+
+     .chart-container {
+       background: var(--bg3);
+       border: 1px solid var(--border);
+       border-radius: 16px;
+       padding: 1.5rem;
+       margin: 1rem 0;
+       position: relative;
+       transition: all 0.3s;
+     }
+
+     .chart-container:hover {
+       border-color: var(--gold);
+       box-shadow: 0 8px 30px rgba(201, 168, 76, 0.15);
+     }
+
+     .chart-wrapper {
+       position: relative;
+       max-width: 100%;
+       margin: 0 auto;
+     }
+
+     .chart-title {
+       font-family: 'DM Mono', monospace;
+       font-size: 0.72rem;
+       color: var(--gold);
+       letter-spacing: 2px;
+       text-transform: uppercase;
+       margin-bottom: 1rem;
+       display: flex;
+       align-items: center;
+       gap: 0.5rem;
+     }
+
+     .chart-grid-2 {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+       gap: 1.5rem;
+       margin-top: 2rem;
+     }
+
+     .chart-grid-3 {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+       gap: 1.5rem;
+       margin-top: 2rem;
+     }
+
+      @media(max-width: 768px) {
+        .chart-grid-2,
+        .chart-grid-3 {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .chart-container {
+          padding: 1rem;
+        }
+        .skills-summary-grid {
+          grid-template-columns: 1fr !important;
+          grid-template-rows: auto !important;
+        }
+        .skills-summary-grid .chart-container {
+          grid-column: 1 !important;
+          grid-row: auto !important;
+        }
+      }
+     /* CHATBOT ASSISTANT */
     #botBubble {
       position: fixed;
       bottom: 2rem;
@@ -3040,8 +3211,9 @@
       <li><a href="#publications">Papers</a></li>
       <li><a href="#awards">Awards</a></li>
       <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#education">Education</a></li>
-      <li class="nav-dropdown">
+<li><a href="#education">Education</a></li>
+       <li><a href="#partnerships">Partnerships</a></li>
+       <li class="nav-dropdown">
         <a href="#">Download▾</a>
         <div class="nav-dropdown-menu">
           <a href="resume%20cv/Varadharajan%20Resume.pdf" target="_blank">Resume</a>
@@ -3577,6 +3749,28 @@
           </div>
         </div>
       </div>
+      
+    </div>
+      <div class="skills-summary-grid fade-in" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr; gap: 1rem; max-width: 1400px; margin: 2rem auto 0;">
+        <div class="chart-container" style="padding: 1rem;">
+          <div class="chart-title">🎯 Top Expertise</div>
+          <div style="display: grid; gap: 0.6rem; padding-top: 0.3rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <div class="skill-circle circle-gold" style="--percentage:100; min-width: 36px; width: 36px; height: 36px;"><div class="circle-inner" style="width: 30px; height: 30px; font-size: 0.65rem;">100%</div></div>
+              <div><div style="font-weight: 600; color: var(--white); font-size: 0.85rem;">Hands-on & Real-World</div><div style="font-size: 0.7rem; color: var(--muted);">Practical approach</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <div class="skill-circle circle-gold" style="--percentage:97; min-width: 36px; width: 36px; height: 36px;"><div class="circle-inner" style="width: 30px; height: 30px; font-size: 0.65rem;">97%</div></div>
+              <div><div style="font-weight: 600; color: var(--white); font-size: 0.85rem;">International Delivery</div><div style="font-size: 0.7rem; color: var(--muted);">11+ countries</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <div class="skill-circle circle-gold" style="--percentage:95; min-width: 36px; width: 36px; height: 36px;"><div class="circle-inner" style="width: 30px; height: 30px; font-size: 0.65rem;">95%</div></div>
+              <div><div style="font-weight: 600; color: var(--white); font-size: 0.85rem;">Corporate Training</div><div style="font-size: 0.7rem; color: var(--muted);">19 years exp.</div></div>
+            </div>
+         </div>
+         
+       </div>
+
     </div>
   </section>
 
@@ -3687,6 +3881,15 @@
     </div>
   </section>
 
+  <!-- <div class="chart-container fade-in" style="max-width: 1000px; margin: 2rem auto;">
+    <div class="chart-title">💼 Experience Timeline</div>
+    <div class="chart-wrapper">
+      <canvas id="experienceTimelineChart"></canvas>
+    </div>
+  </div> -->
+
+  <!-- TRAINING TIMELINE -->
+
   <!-- TRAINING TIMELINE -->
   <section id="training">
     <div class="section-label">Corporate Training</div>
@@ -3790,13 +3993,23 @@
 
   </section>
 
-   <section id="international">
-     <div class="section-label">International Contributions</div>
-     <h2 class="section-title">Global <em>Training Impact</em></h2>
-     <p class="section-subtitle">Delivering world-class corporate training and technical education programs across multiple countries — bridging industry expertise with global learners.</p>
-     
-     <!-- New Design: 4x3 Card Grid -->
-     <div class="training-4x3-grid">
+   <section id="international">  
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; margin-top: 2rem; margin-bottom: 2rem;">
+        <div>
+          <div class="section-label">International Contributions</div>
+      <h2 class="section-title">Global <em>Training Impact</em></h2>
+      <p class="section-subtitle">Delivering world-class corporate training and technical education programs across multiple countries — bridging industry expertise with global learners.</p>
+    
+        </div>
+         <div class="chart-container fade-in" style="padding: 1rem;">
+           <div class="chart-wrapper" style="height: 260px; max-height: 320px; width: 80%; max-width: 500px;">
+             <canvas id="trainingByRegionChart"></canvas>
+           </div>
+         </div>
+      </div>
+      
+      <!-- New Design: 4x3 Card Grid -->
+      <div class="training-4x3-grid">
        <!-- Row 1 -->
        <div class="grid-4x3-card">
          <div class="card-flag-row">
@@ -3978,11 +4191,14 @@
            <span class="audience-label">Audience:</span>
            <span class="audience-value">Cloud Teams</span>
          </div>
-       </div>
-       
-
-     </div>
-   </section>
+          
+         </div>
+        
+      </div>         
+        </div>
+        </div>   
+    </div>
+  </section>
 
   <!-- CERTIFICATIONS -->
   <section id="certs">
@@ -4090,7 +4306,8 @@
     <div class="section-label">Recognition</div>
     <h2 class="section-title">Awards & <em>Student Feedback</em></h2>
 
-    <div class="awards-grid">
+   
+
       <div class="award-card fade-in" style="grid-column: 1 / -1;">
         <div class="award-header">
           <h3>Major Recognition & Awards</h3>
@@ -4172,7 +4389,7 @@
         </div>
         <div class="award-body">
           <div class="award-description-col">
-            <p>Women's Development Program focused on career growth, empowerment, and building essential skills for the modern world.</p>
+            <p>Women's Development Program focused on career growth, empowerment, entrepreneurship and building essential skills for the modern world.</p>
           </div>
           <div class="award-image-col" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 380px; margin: 0 auto; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 12px; border: 1px solid var(--border);">
             <img src="testimonial%20photos/memories/womens.jpeg" class="cert-img-expand" onclick="openImage(this)" alt="Women's Dev Training" style="width: 100%; height: auto; border-radius: 6px;">
@@ -4184,7 +4401,7 @@
           </div>
         </div>
       </div>
-  </section>
+    </section>
 
     <div class="feedback-section">
       <h3>Student Testimonials</h3>
@@ -4264,6 +4481,27 @@
         <div class="stat-item">
           <div class="stat-number">96%</div>
           <div class="stat-label">Placed Students</div>
+        </div>
+      </div>
+
+      <div class="chart-grid-3 fade-in">
+        <div class="chart-container">
+          <div class="chart-title">📈 Project Success Rate</div>
+          <div class="chart-wrapper">
+            <canvas id="projectSuccessChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-container">
+          <div class="chart-title">🎯 Student Performance</div>
+          <div class="chart-wrapper">
+            <canvas id="studentPerformanceChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-container">
+          <div class="chart-title">👥 Student Reach by Program</div>
+          <div class="chart-wrapper">
+            <canvas id="studentReachChart"></canvas>
+          </div>
         </div>
       </div>
 
@@ -4579,21 +4817,108 @@
           <h4>🏫 Tagore Engineering College, Chennai</h4>
           <p>Assistant Professor — Computer Science & Engineering. April 2008 to September 2011 (3ars).</p>
         </div>
-        <div class="about-highlight">
-          <h4>🏫 Lord Venkateshwara Engineering College, Kanchipuram</h4>
-          <p>Lecturer — Information Technology. June 2005 to July 2006 (1 year).</p>
+<div class="about-highlight">
+           <h4>🏫 Lord Venkateshwara Engineering College, Kanchipuram</h4>
+           <p>Lecturer — Information Technology. June 2005 to July 2006 (1 year).</p>
+         </div>
+         <div class="about-highlight">
+           <h4>🏥 Medical & Allied Health Colleges</h4>
+           <p>Delivered programming language courses to Tagore Medical College (MBBS), Tagore Institute of Allied Health
+             Sciences, and Tagore Dental College.</p>
+         </div>
+       </div>
+     </div>
+   </section>
+
+<!-- PARTNERSHIPS -->
+   <section id="partnerships">
+     <div class="section-label">Partnerships</div>
+     <h2 class="section-title">Strategic <em>Partnerships</em></h2>
+     <p class="section-subtitle">Collaborative relationships with leading educational institutions and industry partners for training excellence.</p>
+
+     <div class="partnerships-container">
+       <!-- EITCI Programme Committee -->
+        <div class="partnership-category fade-in">
+       <div class="awards-grid">
+      <div class="award-card fade-in" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, var(--bg3) 100%); border-color: rgba(201,168,76,0.35);">
+        <div class="award-header" style="border-bottom: 2px solid var(--gold);">
+          <h3 style="font-size: 1.1rem;">🏛️ EITCI Programme Committee Member -ID: EITCI-PCM-48267</h3>
         </div>
-        <div class="about-highlight">
-          <h4>🏥 Medical & Allied Health Colleges</h4>
-          <p>Delivered programming language courses to Tagore Medical College (MBBS), Tagore Institute of Allied Health
-            Sciences, and Tagore Dental College.</p>
+        <div class="award-body" style="flex-direction: row; flex-wrap: wrap; gap: 1.5rem; align-items: center;">
+          <div class="award-description-col" style="flex: 1; min-width: 280px;">
+            <p style="margin-bottom: 0.8rem;"><strong style="color: var(--gold);">European Information Technologies Certification Institute, Brussels, EU</strong></p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: center; margin-top: 0.8rem;">
+              <span style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary-lightest); font-size: 0.95rem;">
+                <span style="color: var(--gold);">▸</span> Artificial Intelligence Committee
+              </span>
+              <span style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary-lightest); font-size: 0.95rem;">
+                <span style="color: var(--gold);">▸</span> eLearning Committee
+              </span>
+              <span style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary-lightest); font-size: 0.95rem;">
+                <span style="color: var(--gold);">▸</span> Web Design Committee
+              </span>
+            </div>
+            
+            </div>
+          </div>
+         
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
+       <!-- Universities -->
+       <div class="partnership-category fade-in">
+         <h3 class="partnership-category-title">Universities</h3>
+         <div class="partnership-grid">
+           <div class="partnership-card">
+             <h4 class="partnership-name">Vels University</h4>
+             <p class="partnership-location">Tamil Nadu, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">SR University</h4>
+             <p class="partnership-location">Telangana, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">MGR Janaki Women's College, Madras University</h4>
+             <p class="partnership-location">Tamil Nadu, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">Aadhiparasakthi Engineering College, Anna University</h4>
+             <p class="partnership-location">Tamil Nadu, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">Rajalakshmi Engineering College, Anna University</h4>
+             <p class="partnership-location">Tamil Nadu, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">Sona College of Technology, Anna University</h4>
+             <p class="partnership-location">Tamil Nadu, India</p>
+           </div>
+         </div>
+       </div>
+
+       <!-- Industries -->
+       <div class="partnership-category fade-in">
+         <h3 class="partnership-category-title">Industries</h3>
+         <div class="partnership-grid">
+           <div class="partnership-card">
+             <h4 class="partnership-name">Magendhiran Consultancy Services (MCS)</h4>
+             <p class="partnership-location">Kanchipuram, Tamil Nadu, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">Edunet Foundation</h4>
+             <p class="partnership-location">Haryana, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">Tidy Life India Pvt Ltd</h4>
+             <p class="partnership-location">Chennai, Tamil Nadu, India</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+
+   <!-- CONTACT -->
+   <section id="contact">
     <div class="contact-inner">
       <div class="section-label" style="justify-content:center;">Connect</div>
       <h2 class="section-title" style="font-size:clamp(2rem,5vw,3.5rem);">Let's <em>Work Together</em></h2>
@@ -4923,6 +5248,571 @@
         el.style.transition = 'all 0.3s ease';
       });
     });
+
+    // Chart.js Global Config
+    Chart.defaults.color = '#7a7870';
+    Chart.defaults.borderColor = 'rgba(201, 168, 76, 0.2)';
+    Chart.defaults.font.family = "'DM Mono', monospace";
+
+    // Skills Bar Chart
+    const skillsBarCtx = document.getElementById('skillsBarChart');
+    if (skillsBarCtx) {
+      new Chart(skillsBarCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Python & Data', 'Frontend & MERN', 'Java & Backend', 'DevOps & Cloud', 'Testing & QA', 'Teaching & Training'],
+          datasets: [{
+            label: 'Skill Level (%)',
+            data: [87, 85, 68, 88, 73, 97],
+            backgroundColor: [
+              'rgba(201, 168, 76, 0.8)',
+              'rgba(76, 122, 201, 0.8)',
+              'rgba(201, 168, 76, 0.6)',
+              'rgba(76, 122, 201, 0.6)',
+              'rgba(201, 168, 76, 0.4)',
+              'rgba(76, 122, 201, 0.4)'
+            ],
+            borderColor: '#c9a84c',
+            borderWidth: 1,
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          indexAxis: 'y',
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 100,
+              title: {
+                display: true,
+                text: 'Proficiency (%)',
+                color: '#7a7870'
+              }
+            },
+            y: {
+              ticks: {
+                color: '#f0ede4',
+                font: {
+                  size: 10
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(10, 10, 15, 0.95)',
+              titleColor: '#c9a84c',
+              bodyColor: '#f0ede4',
+              borderColor: 'rgba(201, 168, 76, 0.3)',
+              borderWidth: 1,
+              padding: 12,
+              callbacks: {
+                label: function(context) {
+                  return 'Proficiency: ' + context.parsed.x + '%';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // 3. Skills Radar Chart
+    const skillsCtx = document.getElementById('skillsRadarChart');
+    if (skillsCtx) {
+      new Chart(skillsCtx, {
+        type: 'radar',
+        data: {
+          labels: ['Python & Data', 'Frontend & MERN', 'Java & Backend', 'DevOps & Cloud', 'Testing & QA', 'Teaching & Training'],
+          datasets: [{
+            label: 'Skill Level (%)',
+            data: [87, 85, 68, 88, 73, 97],
+            backgroundColor: 'rgba(201, 168, 76, 0.2)',
+            borderColor: '#c9a84c',
+            borderWidth: 2,
+            pointBackgroundColor: '#c9a84c',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: '#c9a84c',
+            pointRadius: 5,
+            pointHoverRadius: 7
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              beginAtZero: true,
+              max: 100,
+              ticks: {
+                stepSize: 20,
+                color: '#7a7870',
+                backdropColor: 'transparent',
+                font: {
+                  size: 10
+                }
+              },
+              grid: {
+                color: 'rgba(201, 168, 76, 0.15)'
+              },
+              angleLines: {
+                color: 'rgba(201, 168, 76, 0.2)'
+              },
+              pointLabels: {
+                color: '#f0ede4',
+                font: {
+                  size: 10,
+                  family: "'DM Mono', monospace"
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              backgroundColor: 'rgba(10, 10, 15, 0.95)',
+              titleColor: '#c9a84c',
+              bodyColor: '#f0ede4',
+              borderColor: 'rgba(201, 168, 76, 0.3)',
+              borderWidth: 1,
+              padding: 12,
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ': ' + context.parsed.r + '%';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // 3. Training by Region Chart
+    const regionCtx = document.getElementById('trainingByRegionChart');
+    if (regionCtx) {
+      new Chart(regionCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Asia Pacific', 'Middle East', 'North America', 'South Asia'],
+          datasets: [{
+            data: [45, 15, 20, 20],
+            backgroundColor: [
+              'rgba(201, 168, 76, 0.8)',
+              'rgba(76, 122, 201, 0.8)',
+              'rgba(201, 168, 76, 0.5)',
+              'rgba(76, 122, 201, 0.5)'
+            ],
+            borderColor: '#0a0a0f',
+            borderWidth: 3,
+            hoverOffset: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '60%',
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                padding: 15,
+                color: '#f0ede4',
+                font: {
+                  size: 11
+                }
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(10, 10, 15, 0.95)',
+              titleColor: '#c9a84c',
+              bodyColor: '#f0ede4',
+              borderColor: 'rgba(201, 168, 76, 0.3)',
+              borderWidth: 1,
+              padding: 12,
+              callbacks: {
+                label: function(context) {
+                  return context.label + ': ' + context.parsed + '%';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // 4. Training Mode Chart
+    const modeCtx = document.getElementById('trainingModeChart');
+    if (modeCtx) {
+      new Chart(modeCtx, {
+        type: 'pie',
+        data: {
+          labels: ['Online Training', 'Offline Training', 'Hybrid'],
+          datasets: [{
+            data: [65, 25, 10],
+            backgroundColor: [
+              'rgba(201, 168, 76, 0.8)',
+              'rgba(76, 122, 201, 0.8)',
+              'rgba(201, 168, 76, 0.4)'
+            ],
+            borderColor: '#0a0a0f',
+            borderWidth: 3,
+            hoverOffset: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                padding: 15,
+                color: '#f0ede4',
+                font: {
+                  size: 11
+                }
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(10, 10, 15, 0.95)',
+              titleColor: '#c9a84c',
+              bodyColor: '#f0ede4',
+              borderColor: 'rgba(201, 168, 76, 0.3)',
+              borderWidth: 1,
+              padding: 12,
+              callbacks: {
+                label: function(context) {
+                  return context.label + ': ' + context.parsed + '%';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // 5. Project Success Chart
+    const successCtx = document.getElementById('projectSuccessChart');
+    if (successCtx) {
+      new Chart(successCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Web Apps', 'AI/ML', 'Mobile', 'Enterprise', 'Data Analytics'],
+          datasets: [{
+            label: 'Completed',
+            data: [120, 85, 45, 65, 35],
+            backgroundColor: 'rgba(201, 168, 76, 0.7)',
+            borderColor: '#c9a84c',
+            borderWidth: 1,
+            borderRadius: 6
+          }, {
+            label: 'In Progress',
+            data: [15, 10, 8, 5, 5],
+            backgroundColor: 'rgba(76, 122, 201, 0.7)',
+            borderColor: '#4c7ac9',
+            borderWidth: 1,
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            x: {
+              ticks: {
+                color: '#f0ede4',
+                font: {
+                  size: 10
+                }
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Number of Projects',
+                color: '#7a7870'
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                padding: 12,
+                color: '#f0ede4',
+                font: {
+                  size: 10
+                }
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(10, 10, 15, 0.95)',
+              titleColor: '#c9a84c',
+              bodyColor: '#f0ede4',
+              borderColor: 'rgba(201, 168, 76, 0.3)',
+              borderWidth: 1,
+              padding: 12
+            }
+          }
+        }
+      });
+    }
+
+    // 6. Student Performance Chart
+    const perfCtx = document.getElementById('studentPerformanceChart');
+    if (perfCtx) {
+      new Chart(perfCtx, {
+        type: 'line',
+        data: {
+          labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+          datasets: [{
+            label: 'Average Score (%)',
+            data: [78, 82, 85, 88, 91, 94, 96],
+            borderColor: '#c9a84c',
+            backgroundColor: 'rgba(201, 168, 76, 0.1)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#c9a84c',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 5,
+            pointHoverRadius: 7
+          }, {
+            label: 'Placement Rate (%)',
+            data: [72, 78, 82, 86, 89, 93, 96],
+            borderColor: '#4c7ac9',
+            backgroundColor: 'rgba(76, 122, 201, 0.1)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#4c7ac9',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 5,
+            pointHoverRadius: 7
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 70,
+              max: 100,
+              title: {
+                display: true,
+                text: 'Percentage (%)',
+                color: '#7a7870'
+              }
+            },
+            x: {
+              ticks: {
+                color: '#f0ede4'
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                padding: 12,
+                color: '#f0ede4',
+                font: {
+                  size: 10
+                }
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(10, 10, 15, 0.95)',
+              titleColor: '#c9a84c',
+              bodyColor: '#f0ede4',
+              borderColor: 'rgba(201, 168, 76, 0.3)',
+              borderWidth: 1,
+              padding: 12,
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ': ' + context.parsed.y + '%';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // 7. Student Reach by Program Chart
+    const reachCtx = document.getElementById('studentReachChart');
+    if (reachCtx) {
+      new Chart(reachCtx, {
+        type: 'polarArea',
+        data: {
+          labels: ['Corporate Training', 'Academic (SDP)', 'Faculty Dev (FDP)', 'Online Courses', 'Workshops'],
+          datasets: [{
+            data: [2500, 3500, 700, 1200, 600],
+            backgroundColor: [
+              'rgba(201, 168, 76, 0.7)',
+              'rgba(76, 122, 201, 0.7)',
+              'rgba(201, 168, 76, 0.5)',
+              'rgba(76, 122, 201, 0.5)',
+              'rgba(201, 168, 76, 0.3)'
+            ],
+            borderColor: '#0a0a0f',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            r: {
+              ticks: {
+                color: '#7a7870',
+                backdropColor: 'transparent'
+              },
+              grid: {
+                color: 'rgba(201, 168, 76, 0.15)'
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                padding: 12,
+                color: '#f0ede4',
+                font: {
+                  size: 10
+                }
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(10, 10, 15, 0.95)',
+              titleColor: '#c9a84c',
+              bodyColor: '#f0ede4',
+              borderColor: 'rgba(201, 168, 76, 0.3)',
+              borderWidth: 1,
+              padding: 12,
+              callbacks: {
+                label: function(context) {
+                  return context.label + ': ' + context.parsed.r + '+ students';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // 8. Experience Timeline Chart
+    const expCtx = document.getElementById('experienceTimelineChart');
+    if (expCtx) {
+      new Chart(expCtx, {
+        type: 'bar',
+        data: {
+          labels: ['2014-2015', '2015-2017', '2017-2019', '2019-2020', '2020-2021', '2021-2023', '2023-2026'],
+          datasets: [{
+            label: 'Java/J2EE',
+            data: [90, 85, 75, 80, 60, 50, 40],
+            backgroundColor: 'rgba(201, 168, 76, 0.8)',
+            borderColor: '#c9a84c',
+            borderWidth: 1
+          }, {
+            label: 'Spring/Hibernate',
+            data: [30, 70, 85, 90, 50, 40, 30],
+            backgroundColor: 'rgba(76, 122, 201, 0.8)',
+            borderColor: '#4c7ac9',
+            borderWidth: 1
+          }, {
+            label: 'Frontend',
+            data: [10, 20, 40, 60, 70, 75, 80],
+            backgroundColor: 'rgba(81, 207, 102, 0.8)',
+            borderColor: '#51cf66',
+            borderWidth: 1
+          }, {
+            label: 'Python/AI/ML',
+            data: [0, 0, 0, 10, 40, 60, 85],
+            backgroundColor: 'rgba(255, 107, 107, 0.8)',
+            borderColor: '#ff6b6b',
+            borderWidth: 1
+          }, {
+            label: 'DevOps/Cloud',
+            data: [0, 0, 10, 20, 30, 50, 75],
+            backgroundColor: 'rgba(108, 92, 231, 0.8)',
+            borderColor: '#6c5ce7',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            x: {
+              stacked: true,
+              ticks: {
+                color: '#f0ede4',
+                font: {
+                  size: 10
+                }
+              },
+              title: {
+                display: true,
+                text: 'Time Period',
+                color: '#7a7870'
+              }
+            },
+            y: {
+              stacked: true,
+              max: 100,
+              title: {
+                display: true,
+                text: 'Skill Focus (%)',
+                color: '#7a7870'
+              },
+              ticks: {
+                callback: function(value) {
+                  return value + '%';
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                padding: 12,
+                color: '#f0ede4',
+                font: {
+                  size: 10
+                },
+                usePointStyle: true
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(10, 10, 15, 0.95)',
+              titleColor: '#c9a84c',
+              bodyColor: '#f0ede4',
+              borderColor: 'rgba(201, 168, 76, 0.3)',
+              borderWidth: 1,
+              padding: 12,
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ': ' + context.parsed.y + '%';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
   </script>
   <!-- PORTFOLIO ASSISTANT BOT -->
   <div id="botBubble" onclick="toggleBot()" title="Assistant">
@@ -4943,9 +5833,10 @@
       <button class="bot-btn" onclick="botAction('training')">📚 Training Sessions</button>
       <!-- <button class="bot-btn" onclick="botAction('projects')">🚀 Projects Delivered</button> -->
       <button class="bot-btn" onclick="botAction('certs')">📜 Certifications</button>
-      <button class="bot-btn" onclick="botAction('publications')">📄 Research Papers</button>
-      <!-- <button class="bot-btn" onclick="botAction('education')">🎓 Education</button> -->
-      <button class="bot-btn" onclick="botAction('awards')">🏆 Awards & Recognition</button>
+<button class="bot-btn" onclick="botAction('publications')">📄 Research Papers</button>
+       <!-- <button class="bot-btn" onclick="botAction('education')">🎓 Education</button> -->
+       <button class="bot-btn" onclick="botAction('partnerships')">🤝 Partnerships</button>
+       <button class="bot-btn" onclick="botAction('awards')">🏆 Awards & Recognition</button>
       <button class="bot-btn" onclick="botAction('download')">📥 Download Resume/CV</button>
       <button class="bot-btn" onclick="botAction('contact')">📞 Contact Info</button>
       <button class="bot-btn" onclick="botAction('linkedin')">🔗 LinkedIn Profile</button>
