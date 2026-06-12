@@ -110,7 +110,7 @@
        display: flex;
        align-items: center;
        justify-content: space-between;
-       padding: 1.2rem 3rem;
+       padding: 0.7rem 3rem;
        background: rgba(10, 10, 15, 0.85);
        backdrop-filter: blur(16px);
        border-bottom: 1px solid var(--border);
@@ -122,10 +122,10 @@
        background: rgba(10, 10, 15, 0.95);
        box-shadow: var(--shadow-md);
      }
-
+    
     .nav-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: var(--gold);
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -133,7 +133,7 @@
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 0.8rem;
       list-style: none;
       align-items: center;
     }
@@ -142,9 +142,9 @@
       background: none;
       border: 1px solid var(--border);
       color: var(--muted);
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       cursor: pointer;
-      padding: 0.5rem 0.7rem;
+      padding: 0.4rem 0.6rem;
       border-radius: 8px;
       transition: all 0.3s;
     }
@@ -156,7 +156,7 @@
 
     .nav-links a {
       font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--muted);
       text-decoration: none;
       letter-spacing: 1.5px;
@@ -164,6 +164,7 @@
       transition: color 0.2s;
       position: relative;
       cursor: pointer;
+      line-height: 1.1;
     }
 
     .nav-dropdown {
@@ -2381,7 +2382,7 @@
     #contact {
       background: var(--bg);
       text-align: center;
-      padding: 8rem 3rem;
+      padding: 4rem 2rem;
     }
 
     .contact-inner {
@@ -2390,9 +2391,9 @@
     }
 
     .contact-subtitle {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       color: var(--text-secondary-light);
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
       font-weight: 300;
     }
 
@@ -2401,16 +2402,16 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 3rem;
+      margin-bottom: 1.5rem;
     }
 
     .contact-card {
       background: var(--bg2);
       border: 1px solid var(--border);
-      padding: 1.2rem 2rem;
+      padding: 0.8rem 1.5rem;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.6rem;
       text-decoration: none;
       transition: border-color 0.3s, transform 0.3s;
     }
@@ -2441,12 +2442,12 @@
     /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
-      padding: 2rem 3rem;
+      padding: 0.9rem 1.4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.5rem;
     }
 
     footer p {
@@ -2454,9 +2455,111 @@
       font-size: 0.65rem;
       color: var(--muted);
       letter-spacing: 1px;
+      margin: 0;
+      line-height: 1.25;
     }
 
     footer span {
+      color: var(--gold);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.8rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-branding {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .footer-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .footer-social a {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .footer-social a:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      padding: 0.8rem 2rem;
+    }
+
+    .footer-bottom p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+      text-align: center;
+      margin: 0.1rem 0;
+    }
+
+    .footer-bottom span {
       color: var(--gold);
     }
 
@@ -2608,9 +2711,27 @@
         height: 50px;
       }
 
-      footer {
+      .footer-content {
         flex-direction: column;
         text-align: center;
+        padding: 1.5rem 1.5rem;
+      }
+
+      .footer-links {
+        gap: 1rem;
+      }
+
+      .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 1.5rem;
+        gap: 0.3rem;
+      }
+
+      .footer-bottom p {
+        font-size: 0.55rem;
+        margin: 0.2rem 0;
       }
     }
 
@@ -2885,75 +3006,6 @@
       margin-bottom: 1rem;
     }
 
-    /* NEWSLETTER */
-    .newsletter-box {
-      background: var(--gold-dim);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      border-radius: 22px;
-      margin-top: 2rem;
-      text-align: center;
-    }
-
-    .newsletter-box h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      color: var(--white);
-      margin-bottom: 0.8rem;
-    }
-
-    .newsletter-box p {
-      color: var(--text-secondary-light);
-      font-size: 0.95rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .newsletter-input {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .newsletter-input input {
-      flex: 1;
-      padding: 0.8rem;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      color: var(--white);
-      border-radius: 12px;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .newsletter-input input:focus {
-      outline: none;
-      border-color: var(--gold);
-    }
-
-    .newsletter-input button {
-      padding: 0.8rem 2rem;
-      background: var(--gold);
-      color: var(--bg);
-      border: none;
-      cursor: pointer;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-
-    .newsletter-input button:hover {
-      background: var(--gold2);
-    }
-
-    .newsletter-message {
-      font-size: 0.85rem;
-      color: var(--gold);
-      min-height: 20px;
-    }
-
     /* ANIMATION COUNTERS */
     @keyframes bounce {
 
@@ -3201,20 +3253,21 @@
   <nav>
     <div class="nav-logo"></div>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
+      <li><a href="#hero"><b>Home</b></a></li>
+      <li><a href="#about"><b>About</b></a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#training">Training</a></li>
-      <li><a href="#international">International</a></li>
-      <!-- <li><a href="#awards">Projects</a></li> -->
+      <li><a href="#international">International<br>Activities</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#certs">Certifications</a></li>
-      <li><a href="#publications">Papers</a></li>
-      <li><a href="#awards">Awards</a></li>
+      <li><a href="#publications">Research<br>Papers</a></li>
+      <li><a href="#awards">Awards &<br>Achievements</a></li>
+      <li><a href="#partnerships">Partnerships &<br>Collaborations</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#gallery">Gallery</a></li>
-<li><a href="#education">Education</a></li>
-       <li><a href="#partnerships">Partnerships</a></li>
-       <li class="nav-dropdown">
-        <a href="#">Download▾</a>
+      <li class="nav-dropdown">
+        <a href="#">Download CV▾</a>
         <div class="nav-dropdown-menu">
           <a href="resume%20cv/Varadharajan%20Resume.pdf" target="_blank">Resume</a>
           <a href="resume%20cv/varadharajan%20CV.pdf" target="_blank">CV</a>
@@ -3284,7 +3337,7 @@
           <div class="stat-label">International Training Sessions</div>
         </div>
         <div class="stat">
-          <div class="stat-num" data-target="10">0</div>
+          <div class="stat-num" data-target="12">0</div>
           <div class="stat-label">Certifications</div>
         </div>
         <div class="stat">
@@ -4109,7 +4162,7 @@
           </div>
           <h3 class="card-title">Data Analytics<br><span class="card-subtitle">Python + Power BI</span></h3>
          <div class="card-tags">
-           <span class="tag-offline">Offline</span>
+           <span class="tag-online">Online</span>
            <span class="tag-dur">5 Days</span>
            <span class="tag-q">H2 2022</span>
          </div>
@@ -4182,7 +4235,7 @@
          </div>
          <h3 class="card-title">Cloud Deployment<br><span class="card-subtitle">Render, PM2, GitHub Actions</span></h3>
          <div class="card-tags">
-           <span class="tag-offline">Offline</span>
+           <span class="tag-online">Online</span>
            <span class="tag-dur">5 Days</span>
            <span class="tag-q">H2 2025</span>
          </div>
@@ -4200,11 +4253,119 @@
     </div>
   </section>
 
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">Recent Achievements</div>
+    <h2 class="section-title">AIML <em>Projects</em></h2>
+    <p class="section-subtitle">Cutting-edge AI/ML and Data Analytics projects showcasing practical implementation of advanced technologies.</p>
+
+    <div style="margin-top: 3rem;">
+      <!-- AI Agent Projects -->
+      <div style="margin-bottom: 3.5rem;">
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem;">
+          <span style="font-size: 1.5rem;">🤖</span>AI Agent Projects
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+          <!-- Project 1 -->
+          <div class="proj-card fade-in" style="background: linear-gradient(135deg, var(--bg3) 0%, rgba(201, 168, 76, 0.03) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--gold), var(--gold-dim)); opacity: 0; transition: opacity 0.3s;" class="proj-accent"></div>
+            <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 1.5rem;">
+              <div>
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin: 0 0 0.5rem 0;">AI Agent: Conversion Hub</h4>
+                <p style="font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin: 0;">AI Agent · Automation</p>
+              </div>
+              <span style="font-size: 1.8rem;">🚀</span>
+            </div>
+            <p style="color: var(--text-secondary-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">An intelligent AI-powered agent designed for seamless conversion optimization and intelligent automation workflows.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem;">
+              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Python</span>
+              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">AI/ML</span>
+              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Automation</span>
+            </div>
+            <a href="https://github.com/VARADHARAJAN4/AI-Agent-Project---Conversion-Hub.git" target="_blank" class="btn btn-outline" style="width: 100%; text-align: center; justify-content: center;">View Repository →</a>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="proj-card fade-in" style="background: linear-gradient(135deg, var(--bg3) 0%, rgba(201, 168, 76, 0.03) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--gold), var(--gold-dim)); opacity: 0; transition: opacity 0.3s;" class="proj-accent"></div>
+            <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 1.5rem;">
+              <div>
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin: 0 0 0.5rem 0;">AI-Powered Data Cleaning</h4>
+                <p style="font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin: 0;">AI Agent · Data Analytics</p>
+              </div>
+              <span style="font-size: 1.8rem;">🧹</span>
+            </div>
+            <p style="color: var(--text-secondary-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Intelligent automated data cleaning process leveraging AI agents to detect, validate, and cleanse data anomalies at scale.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem;">
+              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Python</span>
+              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">AI Agent</span>
+              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Data Cleaning</span>
+            </div>
+            <a href="https://github.com/VARADHARAJAN4/AI-Agent-Data-Analytics-Project--Automated-Data-Cleaning-Process-.git" target="_blank" class="btn btn-outline" style="width: 100%; text-align: center; justify-content: center;">View Repository →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Analytics Projects -->
+      <div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem;">
+          <span style="font-size: 1.5rem;">📊</span>Data Analytics Projects
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+          <!-- Project 3 -->
+          <div class="proj-card fade-in" style="background: linear-gradient(135deg, var(--bg3) 0%, rgba(201, 168, 76, 0.03) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--gold), var(--gold-dim)); opacity: 0; transition: opacity 0.3s;" class="proj-accent"></div>
+            <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 1.5rem;">
+              <div>
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin: 0 0 0.5rem 0;">Vietnam Weather Analysis</h4>
+                <p style="font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin: 0;">Data Analysis · Visualization</p>
+              </div>
+              <span style="font-size: 1.8rem;">🌤️</span>
+            </div>
+            <p style="color: var(--text-secondary-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Comprehensive data analysis of Vietnam's weather patterns with advanced visualizations and predictive insights using Python.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem;">
+              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Python</span>
+              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Pandas</span>
+              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Visualization</span>
+            </div>
+            <a href="https://github.com/VARADHARAJAN4/Data_Analysis_Vietnam_weather_Analysis.git" target="_blank" class="btn btn-outline" style="width: 100%; text-align: center; justify-content: center;">View Repository →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .proj-card {
+        cursor: default;
+      }
+      .proj-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--gold);
+        box-shadow: 0 20px 50px rgba(201, 168, 76, 0.15);
+      }
+      .proj-card:hover .proj-accent {
+        opacity: 1 !important;
+      }
+    </style>
+  </section>
+
   <!-- CERTIFICATIONS -->
   <section id="certs">
     <div class="section-label">Credentials</div>
     <h2 class="section-title">Certifications & <em>Credentials</em></h2>
     <div class="certs-grid">
+      <div class="cert-card fade-in">
+        <img src="AI%20CERTIFICATE/claude%20code%20101.png" class="cert-img-expand" onclick="openImage(this)"
+          alt="Claude Code 101">
+        <div class="cert-issuer">Anthropic · AI</div>
+        <div class="cert-name">Claude Code 101</div>
+      </div>
+      <div class="cert-card fade-in">
+        <img src="AI%20CERTIFICATE/Claude%20101.png" class="cert-img-expand" onclick="openImage(this)"
+          alt="Claude 101">
+        <div class="cert-issuer">Anthropic · AI</div>
+        <div class="cert-name">Claude 101</div>
+      </div>
       <div class="cert-card fade-in">
         <img src="testimonial%20photos/DATA%20ANALYSIS%20WITH%20PYTHON_page1.png" class="cert-img-expand" onclick="openImage(this)"
           alt="Data Analysis with Python">
@@ -4614,6 +4775,148 @@
     </div>
   </section>
 
+<!-- PARTNERSHIPS -->
+   <section id="partnerships">
+     <div class="section-label">Partnerships</div>
+     <h2 class="section-title">Strategic <em>Partnerships</em></h2>
+     <p class="section-subtitle">Collaborative relationships with leading educational institutions and industry partners for training excellence.</p>
+
+     <div class="partnerships-container">
+       <!-- EITCI Programme Committee -->
+        <div class="partnership-category fade-in">
+       <div class="awards-grid">
+      <div class="award-card fade-in" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, var(--bg3) 100%); border-color: rgba(201,168,76,0.35);">
+        <div class="award-header" style="border-bottom: 2px solid var(--gold);">
+          <h3 style="font-size: 1.1rem;">🏛️ EITCI Programme Committee Member -ID: EITCI-PCM-48267</h3>
+        </div>
+        <div class="award-body" style="flex-direction: row; flex-wrap: wrap; gap: 1.5rem; align-items: center;">
+          <div class="award-description-col" style="flex: 1; min-width: 280px;">
+            <p style="margin-bottom: 0.8rem;"><strong style="color: var(--gold);">European Information Technologies Certification Institute, Brussels, EU</strong></p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: center; margin-top: 0.8rem;">
+              <span style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary-lightest); font-size: 0.95rem;">
+                <span style="color: var(--gold);">▸</span> Artificial Intelligence Committee
+              </span>
+              <span style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary-lightest); font-size: 0.95rem;">
+                <span style="color: var(--gold);">▸</span> eLearning Committee
+              </span>
+              <span style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary-lightest); font-size: 0.95rem;">
+                <span style="color: var(--gold);">▸</span> Web Design Committee
+              </span>
+            </div>
+            
+            </div>
+          </div>
+         
+        </div>
+      </div>
+
+       <!-- Universities -->
+       <div class="partnership-category fade-in">
+         <h3 class="partnership-category-title">Universities & Colleges</h3>
+         <div class="partnership-grid">
+           <div class="partnership-card">
+             <h4 class="partnership-name">Vels University</h4>
+             <p class="partnership-location">Tamil Nadu, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">SR University</h4>
+             <p class="partnership-location">Telangana, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">MGR Janaki Women's College, Madras University</h4>
+             <p class="partnership-location">Tamil Nadu, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">Aadhiparasakthi Engineering College, Anna University</h4>
+             <p class="partnership-location">Tamil Nadu, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">Rajalakshmi Engineering College, Anna University</h4>
+             <p class="partnership-location">Tamil Nadu, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">Sona College of Technology, Anna University</h4>
+             <p class="partnership-location">Tamil Nadu, India</p>
+           </div>
+         </div>
+       </div>
+
+       <!-- Industries -->
+       <div class="partnership-category fade-in">
+         <h3 class="partnership-category-title">Industries</h3>
+         <div class="partnership-grid">
+           <div class="partnership-card">
+             <h4 class="partnership-name">Magendhiran Consultancy Services (MCS)</h4>
+             <p class="partnership-location">Kanchipuram, Tamil Nadu, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">Edunet Foundation</h4>
+             <p class="partnership-location">Haryana, India</p>
+           </div>
+           <div class="partnership-card">
+             <h4 class="partnership-name">Tidy Life India Pvt Ltd</h4>
+             <p class="partnership-location">Chennai, Tamil Nadu, India</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-label">Academic Background</div>
+    <h2 class="section-title">Education & <em>Academia</em></h2>
+    <div class="edu-grid">
+      <div class="edu-card fade-in">
+        <div class="edu-badge">In Progress</div>
+        <div class="edu-degree">MBA</div>
+        <div class="edu-dept">International Business</div>
+        <div class="edu-inst">Alagappa University, Karaikudi</div>
+        <div class="edu-year">Ongoing</div>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-badge">2008</div>
+        <div class="edu-degree">M.E</div>
+        <div class="edu-dept">Computer Science & Engineering</div>
+        <div class="edu-inst">B.S Abdur Rahman Crescent University · Anna University</div>
+        <div class="edu-year">July 2008</div>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-badge">2005</div>
+        <div class="edu-degree">B.Tech</div>
+        <div class="edu-dept">Information Technology</div>
+        <div class="edu-inst">Pallavan College of Engineering · Anna University</div>
+        <div class="edu-year">April 2005</div>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-badge">2002</div>
+        <div class="edu-degree">Diploma</div>
+        <div class="edu-dept">Computer Technology</div>
+        <div class="edu-inst">Pallavan Polytechnic, Kanchipuram · DOTE</div>
+        <div class="edu-year">April 2002</div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;" class="fade-in">
+      <div class="section-label" style="margin-bottom:1rem;">Academic Teaching</div>
+      <div class="about-grid">
+        <div class="about-highlight">
+          <h4>🏫 Tagore Engineering College, Chennai</h4>
+          <p>Assistant Professor — Computer Science & Engineering. April 2008 to September 2011 (3ars).</p>
+        </div>
+<div class="about-highlight">
+           <h4>🏫 Lord Venkateshwara Engineering College, Kanchipuram</h4>
+           <p>Lecturer — Information Technology. June 2005 to July 2006 (1 year).</p>
+         </div>
+         <div class="about-highlight">
+           <h4>🏥 Medical & Allied Health Colleges</h4>
+           <p>Delivered programming language courses to Tagore Medical College (MBBS), Tagore Institute of Allied Health
+             Sciences, and Tagore Dental College.</p>
+         </div>
+       </div>
+     </div>
+   </section>
+
   <!-- PHOTO CAROUSEL -->
   <section id="gallery" style="background: var(--bg3); padding: 6rem 3rem;">
     <div class="section-label">Gallery</div>
@@ -4830,153 +5133,57 @@
      </div>
    </section>
 
-<!-- PARTNERSHIPS -->
-   <section id="partnerships">
-     <div class="section-label">Partnerships</div>
-     <h2 class="section-title">Strategic <em>Partnerships</em></h2>
-     <p class="section-subtitle">Collaborative relationships with leading educational institutions and industry partners for training excellence.</p>
 
-     <div class="partnerships-container">
-       <!-- EITCI Programme Committee -->
-        <div class="partnership-category fade-in">
-       <div class="awards-grid">
-      <div class="award-card fade-in" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, var(--bg3) 100%); border-color: rgba(201,168,76,0.35);">
-        <div class="award-header" style="border-bottom: 2px solid var(--gold);">
-          <h3 style="font-size: 1.1rem;">🏛️ EITCI Programme Committee Member -ID: EITCI-PCM-48267</h3>
-        </div>
-        <div class="award-body" style="flex-direction: row; flex-wrap: wrap; gap: 1.5rem; align-items: center;">
-          <div class="award-description-col" style="flex: 1; min-width: 280px;">
-            <p style="margin-bottom: 0.8rem;"><strong style="color: var(--gold);">European Information Technologies Certification Institute, Brussels, EU</strong></p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: center; margin-top: 0.8rem;">
-              <span style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary-lightest); font-size: 0.95rem;">
-                <span style="color: var(--gold);">▸</span> Artificial Intelligence Committee
-              </span>
-              <span style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary-lightest); font-size: 0.95rem;">
-                <span style="color: var(--gold);">▸</span> eLearning Committee
-              </span>
-              <span style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary-lightest); font-size: 0.95rem;">
-                <span style="color: var(--gold);">▸</span> Web Design Committee
-              </span>
-            </div>
-            
-            </div>
-          </div>
-         
-        </div>
-      </div>
-
-       <!-- Universities -->
-       <div class="partnership-category fade-in">
-         <h3 class="partnership-category-title">Universities & Colleges</h3>
-         <div class="partnership-grid">
-           <div class="partnership-card">
-             <h4 class="partnership-name">Vels University</h4>
-             <p class="partnership-location">Tamil Nadu, India</p>
-           </div>
-           <div class="partnership-card">
-             <h4 class="partnership-name">SR University</h4>
-             <p class="partnership-location">Telangana, India</p>
-           </div>
-           <div class="partnership-card">
-             <h4 class="partnership-name">MGR Janaki Women's College, Madras University</h4>
-             <p class="partnership-location">Tamil Nadu, India</p>
-           </div>
-           <div class="partnership-card">
-             <h4 class="partnership-name">Aadhiparasakthi Engineering College, Anna University</h4>
-             <p class="partnership-location">Tamil Nadu, India</p>
-           </div>
-           <div class="partnership-card">
-             <h4 class="partnership-name">Rajalakshmi Engineering College, Anna University</h4>
-             <p class="partnership-location">Tamil Nadu, India</p>
-           </div>
-           <div class="partnership-card">
-             <h4 class="partnership-name">Sona College of Technology, Anna University</h4>
-             <p class="partnership-location">Tamil Nadu, India</p>
-           </div>
-         </div>
-       </div>
-
-       <!-- Industries -->
-       <div class="partnership-category fade-in">
-         <h3 class="partnership-category-title">Industries</h3>
-         <div class="partnership-grid">
-           <div class="partnership-card">
-             <h4 class="partnership-name">Magendhiran Consultancy Services (MCS)</h4>
-             <p class="partnership-location">Kanchipuram, Tamil Nadu, India</p>
-           </div>
-           <div class="partnership-card">
-             <h4 class="partnership-name">Edunet Foundation</h4>
-             <p class="partnership-location">Haryana, India</p>
-           </div>
-           <div class="partnership-card">
-             <h4 class="partnership-name">Tidy Life India Pvt Ltd</h4>
-             <p class="partnership-location">Chennai, Tamil Nadu, India</p>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
-
-   <!-- CONTACT -->
-   <section id="contact">
-    <div class="contact-inner">
-      <div class="section-label" style="justify-content:center;">Connect</div>
-      <h2 class="section-title" style="font-size:clamp(2rem,5vw,3.5rem);">Let's <em>Work Together</em></h2>
-      <p class="contact-subtitle">Open to corporate training, freelance development, curriculum consulting, and academic
-        collaborations across India and globally.</p>
-      <div class="contact-cards">
-        <a href="tel:+919629914445" class="contact-card">
-          <span class="contact-card-icon">📱</span>
-          <div>
-            <div class="contact-card-label">Mobile</div>
-            <div class="contact-card-text">+91 9629914445</div>
-          </div>
-        </a>
-        <a href="mailto:varadharajana@gmail.com" class="contact-card">
-          <span class="contact-card-icon">✉️</span>
-          <div>
-            <div class="contact-card-label">Email</div>
-            <div class="contact-card-text">varadharajana@gmail.com</div>
-          </div>
-        </a>
-        <div class="contact-card">
-          <span class="contact-card-icon">📍</span>
-          <div>
-            <div class="contact-card-label">Location</div>
-            <div class="contact-card-text">Kanchipuram, Tamil Nadu, India</div>
-          </div>
-        </div>
-      </div>
-      <div class="about-tags" style="justify-content:center; margin-bottom:2.5rem;">
-        <span class="tag">Corporate Training</span>
-        <span class="tag">Java Full Stack</span>
-        <span class="tag">MERN Stack</span>
-        <span class="tag">Python / ML</span>
-        <span class="tag">Freelance Dev</span>
-        <span class="tag">Curriculum Design</span>
-      </div>
-      <a href="mailto:varadharajana@gmail.com" class="btn btn-primary" style="font-size:0.8rem; padding:1rem 3rem;">Send
-        Me an Email ↗</a>
-
-      <!-- Newsletter Signup -->
-      <div class="newsletter-box fade-in">
-        <h4>📬 Stay Updated</h4>
-        <p>Get exclusive updates on new courses, training programs, and industry insights delivered to your inbox.</p>
-        <div class="newsletter-input">
-          <input type="email" id="newsletterEmail" placeholder="your@email.com">
-          <button onclick="subscribeNewsletter()" style="min-width:120px;">Subscribe</button>
-        </div>
-        <div class="newsletter-message" id="newsMessage"></div>
-        <p style="font-size:0.85rem; color:var(--muted); margin-top:0.8rem;">I respect your privacy. No spam,
-          unsubscribe anytime.</p>
-      </div>
-    </div>
-  </section>
 
   <footer>
-    <p>© 2025 <span></span> · All Rights Reserved</p>
-    <p>Last Updated: June 2026 <img src="testimonial%20photos/ai_dashboard_5sec.gif" alt="Last Updated" style="height:20px; vertical-align:middle; margin-left:8px; border-radius:4px;"></p>
-    <p>Built with precision · Chennai, Tamil Nadu · <span>India</span></p>
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="contact-inner">
+        <div class="section-label" style="justify-content:center;">Connect</div>
+        <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.8rem); margin-bottom:1rem;">Let's <em>Work Together</em></h2>
+        <p class="contact-subtitle" style="margin-bottom:1.5rem; font-size:0.95rem;">Open to corporate training, freelance development, curriculum consulting, and academic collaborations across India and globally.</p>
+        <div class="contact-cards">
+          <a href="tel:+919629914445" class="contact-card">
+            <span class="contact-card-icon">📱</span>
+            <div>
+              <div class="contact-card-label">Mobile</div>
+              <div class="contact-card-text">+91 9629914445</div>
+            </div>
+          </a>
+          <a href="mailto:varadharajana@gmail.com" class="contact-card">
+            <span class="contact-card-icon">✉️</span>
+            <div>
+              <div class="contact-card-label">Email</div>
+              <div class="contact-card-text">varadharajana@gmail.com</div>
+            </div>
+          </a>
+          <div class="contact-card">
+            <span class="contact-card-icon">📍</span>
+            <div>
+              <div class="contact-card-label">Location</div>
+              <div class="contact-card-text">Kanchipuram, Tamil Nadu, India</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+    <div class="footer-content">
+      <div class="footer-branding">
+        <div class="footer-name">Varadharajan A</div>
+        <div class="footer-title">Full Stack Trainer & Developer</div>
+      </div>
+          <div class="footer-social">
+        <a href="https://www.linkedin.com/in/varadharajan-a-1a594430/" target="_blank" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/varadharajan-a" target="_blank" aria-label="GitHub">git</a>
+        <a href="https://www.youtube.com/@varadharajan-a" target="_blank" aria-label="YouTube">yt</a>
+        <a href="mailto:varadharajana@gmail.com" aria-label="Email">✉</a>
+        <a href="tel:+919629914445" aria-label="Phone">📱</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span>Varadharajan A</span> · All Rights Reserved</p>
+      <p>Last Updated: June 2026 · <span>India</span></p>
+    </div>
   </footer>
 
   <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
@@ -4991,19 +5198,44 @@
     // THEME TOGGLE
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+    
+    if (themeToggle) {
+      const getSavedTheme = () => {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          return savedTheme === 'light' ? 'light' : 'dark';
+        } catch (error) {
+          return 'dark';
+        }
+      };
 
-    if (savedTheme === 'light') {
-      body.classList.add('light-mode');
-      themeToggle.textContent = '☀️';
+      const setSavedTheme = (theme) => {
+        try {
+          localStorage.setItem('theme', theme);
+        } catch (error) {
+          // localStorage unavailable
+        }
+      };
+
+      const updateThemeIcon = () => {
+        const isLight = body.classList.contains('light-mode');
+        themeToggle.textContent = isLight ? '☀️' : '🌙';
+        themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+      };
+
+      const savedTheme = getSavedTheme();
+      if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+      }
+      updateThemeIcon();
+
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        const isLight = body.classList.contains('light-mode');
+        updateThemeIcon();
+        setSavedTheme(isLight ? 'light' : 'dark');
+      });
     }
-
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('light-mode');
-      const isLight = body.classList.contains('light-mode');
-      themeToggle.textContent = isLight ? '☀️' : '🌙';
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    });
 
      // TYPEWRITER
      const roles = [
@@ -5169,49 +5401,6 @@
 
     document.getElementById('projectModal').addEventListener('click', (e) => {
       if (e.target.id === 'projectModal') closeProjectModal();
-    });
-
-    // NEWSLETTER SUBSCRIPTION
-    function subscribeNewsletter() {
-      const email = document.getElementById('newsletterEmail').value;
-      const msgEl = document.getElementById('newsMessage');
-
-      if (!email || !email.includes('@')) {
-        msgEl.textContent = '❌ Please enter a valid email';
-        msgEl.style.color = '#ff6b6b';
-        return;
-      }
-
-      // Simulate sending
-      msgEl.textContent = '⏳ Subscribing...';
-      msgEl.style.color = 'var(--gold)';
-
-      setTimeout(() => {
-        msgEl.textContent = '✅ Thank you! Check your email to confirm.';
-        msgEl.style.color = '#51cf66';
-        document.getElementById('newsletterEmail').value = '';
-
-        // Store subscription
-        let subs = JSON.parse(localStorage.getItem('subscribers') || '[]');
-        if (!subs.includes(email)) {
-          subs.push(email);
-          localStorage.setItem('subscribers', JSON.stringify(subs));
-        }
-
-        setTimeout(() => {
-          msgEl.textContent = '';
-        }, 4000);
-      }, 1500);
-    }
-
-    // Enter key to subscribe
-    document.addEventListener('DOMContentLoaded', () => {
-      const emailInput = document.getElementById('newsletterEmail');
-      if (emailInput) {
-        emailInput.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') subscribeNewsletter();
-        });
-      }
     });
 
     // Smooth animations on load
