@@ -72,7 +72,8 @@
        line-height: 1.75;
        overflow-x: hidden;
        position: relative;
-       min-height: 100vh;
+        min-height: 100vh;
+        padding-left: calc(250px + 1rem);
      }
 
     /* NOISE OVERLAY */
@@ -105,21 +106,26 @@
        position: fixed;
        top: 0;
        left: 0;
-       right: 0;
+       bottom: 0;
+       width: 250px;
        z-index: 100;
        display: flex;
-       align-items: center;
-       justify-content: space-between;
-       padding: 0.7rem 3rem;
-       background: rgba(10, 10, 15, 0.85);
+       flex-direction: column;
+       align-items: flex-start;
+       justify-content: flex-start;
+       padding: 2rem 1.5rem;
+       max-height: 100vh;
+       overflow-y: auto;
+       overscroll-behavior: contain;
+       background: rgba(10, 10, 15, 0.95);
        backdrop-filter: blur(16px);
-       border-bottom: 1px solid var(--border);
+       border-right: 1px solid var(--border);
        transition: all 0.4s var(--transition-base);
        box-shadow: var(--shadow-sm);
      }
      
      nav.scrolled {
-       background: rgba(10, 10, 15, 0.95);
+       background: rgba(10, 10, 15, 0.97);
        box-shadow: var(--shadow-md);
      }
     
@@ -129,26 +135,61 @@
       color: var(--gold);
       letter-spacing: 2px;
       text-transform: uppercase;
+      margin-bottom: 2rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 0.8rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
       list-style: none;
-      align-items: center;
+      width: 100%;
     }
 
+    body.menu-hidden {
+      padding-left: 1rem;
+    }
+
+    body.menu-hidden nav {
+      transform: translateX(calc(-100% - 1rem));
+    }
+
+    .content-layout {
+      position: relative;
+      padding: 5rem 5cm 0 5cm;
+    }
+
+    .menu-toggle,
     #themeToggle {
-      background: none;
+      position: fixed;
+      top: 1rem;
       border: 1px solid var(--border);
       color: var(--muted);
-      font-size: 0.95rem;
       cursor: pointer;
-      padding: 0.4rem 0.6rem;
       border-radius: 8px;
       transition: all 0.3s;
     }
 
+    .menu-toggle {
+      left: 1rem;
+      z-index: 102;
+      font-size: 1rem;
+      padding: 0.4rem 0.7rem;
+      background: rgba(10, 10, 15, 0.75);
+      backdrop-filter: blur(10px);
+    }
+
+    #themeToggle {
+      right: 1rem;
+      z-index: 101;
+      background: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .menu-toggle:hover,
     #themeToggle:hover {
       color: var(--gold);
       border-color: var(--gold);
@@ -156,7 +197,7 @@
 
     .nav-links a {
       font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       color: var(--muted);
       text-decoration: none;
       letter-spacing: 1.5px;
@@ -164,23 +205,30 @@
       transition: color 0.2s;
       position: relative;
       cursor: pointer;
-      line-height: 1.1;
+      line-height: 1.4;
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
     }
 
     .nav-dropdown {
       position: relative;
+      width: 100%;
     }
 
     .nav-dropdown-menu {
       display: none;
       position: absolute;
-      top: 100%;
-      left: 0;
+      top: 0;
+      left: 100%;
       background: var(--bg2);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 0.5rem 0;
       min-width: 180px;
+      max-height: calc(100vh - 2rem);
+      overflow-y: auto;
+      overscroll-behavior: contain;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       z-index: 100;
     }
@@ -192,6 +240,7 @@
     .nav-dropdown > a::after {
       content: ' ▾';
       font-size: 0.6rem;
+      margin-left: 0.35rem;
     }
 
     .nav-dropdown-menu a {
@@ -212,13 +261,14 @@
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -3px;
+      bottom: 0;
       left: 0;
-      right: 0;
+      width: 100%;
       height: 1px;
       background: var(--gold);
       transform: scaleX(0);
       transition: transform 0.2s;
+      transform-origin: left center;
     }
 
     .nav-links a:hover {
@@ -2023,6 +2073,60 @@
       margin-bottom: 1.5rem;
     }
 
+    .feedback-links-heading {
+      margin: 2rem 0 1rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1.35rem;
+      text-align: center;
+    }
+
+    .feedback-links-note {
+      text-align: center;
+      color: var(--text-secondary-light);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feedback-links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feedback-link-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.08), rgba(255, 255, 255, 0.02));
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .feedback-link-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .feedback-link-card strong {
+      display: block;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .feedback-link-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .feedback-link-card .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
     .feedback-note {
       font-size: 0.9rem;
       color: var(--muted);
@@ -2601,6 +2705,10 @@
 
     /* RESPONSIVE */
     @media(max-width:768px) {
+      body {
+        padding-left: 0;
+      }
+
       nav {
         padding: 1rem 1.5rem;
       }
@@ -2700,6 +2808,10 @@
 
       .feedback-stats {
         gap: 1.5rem;
+      }
+
+      .feedback-links-grid {
+        grid-template-columns: 1fr;
       }
 
       .feedback-card {
@@ -3274,9 +3386,12 @@
         </div>
       </li>
       <li><a href="#contact"><b>Contact</b></a></li>
-      <li><button id="themeToggle" title="Toggle dark/light mode">🌙</button></li>
     </ul>
   </nav>
+
+  <main class="content-layout">
+    <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu" title="Toggle menu">☰</button>
+    <button id="themeToggle" title="Toggle dark/light mode">🌙</button>
 
   <!-- HERO -->
   <section id="hero">
@@ -3633,6 +3748,15 @@
           <div class="skill-bar-label">
             <div class="skill-name">Core Java / J2EE</div>
             <div class="skill-level">Advanced</div>
+          </div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-circle circle-gold" style="--percentage:92">
+            <div class="circle-inner">92%</div>
+          </div>
+          <div class="skill-bar-label">
+            <div class="skill-name">Application Development</div>
+            <div class="skill-level">Expert</div>
           </div>
         </div>
       </div>
@@ -4418,10 +4542,17 @@
         <div class="cert-name">Foundation for Test Automation</div>
       </div>
       <div class="cert-card fade-in">
+        <img src="AI%20CERTIFICATE/VELSOFT.png" class="cert-img-expand" onclick="openImage(this)"
+          alt="VELSOFT">
+        <div class="cert-issuer">VELSOFT · AI</div>
+        <div class="cert-name">AI Certification</div>
+      </div>
+      <div class="cert-card fade-in">
         <img src="testimonial%20photos/ai%20certificate%20from%20EY.png" class="cert-img-expand" onclick="openImage(this)" alt="AI Certificate">
         <div class="cert-issuer">EY NextGen</div>
         <div class="cert-name">AI Certification</div>
       </div>
+
     </div>
   </section>
 
@@ -4763,8 +4894,37 @@
         </div>
       </div>
 
+      <h4 class="feedback-links-heading">Know About Me Through Feedback Sessions</h4>
+      <p class="feedback-links-note">Watch training feedback, student appreciation, and project outcomes shared across YouTube, LinkedIn, and GitHub.</p>
+
+      <div class="feedback-links-grid">
+        <div class="feedback-link-card fade-in">
+          <strong>YouTube Feedback Sessions</strong>
+          <span>Training demos, student feedback, and session highlights</span>
+          <a href="https://www.youtube.com/playlist?list=PLMN7kUZRDPrEglrDamS1r5-y_djTMZhuk" target="_blank" class="btn btn-outline">
+            <span>Open YouTube</span>
+          </a>
+        </div>
+
+        <div class="feedback-link-card fade-in">
+          <strong>LinkedIn Student Feedback</strong>
+          <span>Student appreciation and professional recommendations</span>
+          <a href="https://www.linkedin.com/posts/prashanna-venkatesh-n-8179a4287_python-django-fullstackdevelopment-activity-7448352176663396352-bPl1" target="_blank" class="btn btn-outline">
+            <span>View LinkedIn Feedback</span>
+          </a>
+        </div>
+
+        <div class="feedback-link-card fade-in">
+          <strong>GitHub Project Links</strong>
+          <span>Student and trainer project repositories</span>
+          <a href="https://github.com/VARADHARAJAN4" target="_blank" class="btn btn-outline">
+            <span>Open GitHub Projects</span>
+          </a>
+        </div>
+      </div>
+
       <div class="feedback-link">
-        <a href="https://www.linkedin.com/posts/prashanna-venkatesh-n-8179a4287_python-django-fullstackdevelopment-activity-7448352176663396352-bPl1"
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7448352176663396352/?commentUrn=urn%3Ali%3Acomment%3A(ugcPost%3A7448352173987618816%2C7448354823906758656)&dashCommentUrn=urn%3Ali%3Afsd_comment%3A(7448354823906758656%2Curn%3Ali%3AugcPost%3A7448352173987618816)"
           target="_blank" class="btn btn-outline">
           <span>View More Feedback</span>
         </a>
@@ -5020,6 +5180,32 @@
       const src = img.src || img.getAttribute('data-src');
       if (src) window.open(src, '_blank');
     }
+
+    // Smooth scroll for sidebar menu/hash links with fixed sidebar offset
+    (function () {
+      const OFFSET = 110; // keeps section title visible under fixed nav/progress
+      const sidebar = document.querySelector('nav');
+      document.addEventListener('click', (e) => {
+        const clickedLink = e.target && e.target.closest ? e.target.closest('a[href^="#"], a[href="#"]') : null;
+        if (!clickedLink) return;
+
+        // Only handle clicks coming from our left menu
+        if (sidebar && !sidebar.contains(clickedLink)) return;
+
+        const href = clickedLink.getAttribute('href');
+        if (!href || href === '#') return;
+        const id = href.slice(1);
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        e.preventDefault();
+        const y = el.getBoundingClientRect().top + window.pageYOffset - OFFSET;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        history.pushState(null, '', href);
+      });
+    })();
+
+
     (function () {
       const slides = document.querySelectorAll('.pg-slide');
       const track = document.getElementById('pgSlides');
@@ -5131,9 +5317,11 @@
          </div>
        </div>
      </div>
-   </section>
+    </section>
 
 
+
+  </main>
 
   <footer>
     <!-- CONTACT -->
@@ -5234,6 +5422,23 @@
         const isLight = body.classList.contains('light-mode');
         updateThemeIcon();
         setSavedTheme(isLight ? 'light' : 'dark');
+      });
+    }
+
+    const menuToggle = document.getElementById('menuToggle');
+
+    if (menuToggle) {
+      const updateMenuIcon = () => {
+        const isHidden = body.classList.contains('menu-hidden');
+        menuToggle.textContent = isHidden ? '☰' : '×';
+        menuToggle.setAttribute('aria-expanded', String(!isHidden));
+      };
+
+      updateMenuIcon();
+
+      menuToggle.addEventListener('click', () => {
+        body.classList.toggle('menu-hidden');
+        updateMenuIcon();
       });
     }
 
