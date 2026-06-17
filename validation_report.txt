@@ -1,0 +1,29 @@
+﻿Total issues: 70
+Possibly unencoded & in text at line 7: Varadharajan A ù Full Stack Trainer & Developer
+Possibly unencoded & in attribute href at line 8
+Possibly unencoded & in text at line 13: /* AWARDS & FEEDBACK */
+Possibly unencoded & in text at line 13: /* SEARCH & FILTER */
+Possibly unencoded & in text at line 3235: APIs & Integrations
+Possibly unencoded & in text at line 3265: Awards &
+Possibly unencoded & in text at line 3266: Partnerships &
+Possibly unencoded & in text at line 3322: Available for Training & Consulting
+Possibly unencoded & in text at line 3466: & CI/CD:
+Possibly unencoded & in text at line 3476: Testing & Automation:
+Possibly unencoded & in text at line 3481: Technical & Academic Leadership:
+Possibly unencoded & in text at line 3490: Assistant Professor at Tagore Engineering College for 4 years. Lecturer at Rajiv
+Possibly unencoded & in text at line 3500: Python, Selenium, Cucumber, Data Analytics & Machine Learning, Data Visualizatio
+Possibly unencoded & in text at line 3511: Skills &
+python : Traceback (most recent call last):
+At line:1 char:1
++ python validate_temp.py 2>&1 | Out-File -Encoding utf8 validation_rep ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "D:\My data\Applying\portfolio\validate_temp.py", line 44, in <module>
+    print(e)
+    ~~~~~^^^
+  File "C:\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f40d' in position 43: character maps to <undefined>

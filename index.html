@@ -3135,14 +3135,20 @@
        animation: bounce 0.6s ease infinite;
      }
 
-     .chart-container {
+.chart-container {
        background: var(--bg3);
        border: 1px solid var(--border);
        border-radius: 16px;
        padding: 1.5rem;
        margin: 1rem 0;
        position: relative;
+       overflow: hidden;
        transition: all 0.3s;
+     }
+
+     /* Ensure chart/card content never bleeds outside rounded corners */
+     .chart-container * {
+       box-sizing: border-box;
      }
 
      .chart-container:hover {
@@ -3928,21 +3934,21 @@
       </div>
       
     </div>
-      <div class="skills-summary-grid fade-in" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr; gap: 1rem; max-width: 1400px; margin: 2rem auto 0;">
-        <div class="chart-container" style="padding: 1rem;">
+         <div class="skills-summary-grid fade-in" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr; gap: 1rem; max-width: 1400px; margin: 2rem auto 0;">
+        <div class="chart-container" style="padding: 1rem; border: 1px solid var(--border);">
           <div class="chart-title">🎯 Top Expertise</div>
-          <div style="display: grid; gap: 0.6rem; padding-top: 0.3rem;">
-            <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; padding-top: 0.3rem; flex-wrap: nowrap;">
+            <div style="display: flex; align-items: center; gap: 0.6rem; flex: 0 0 auto;">
               <div class="skill-circle circle-gold" style="--percentage:100; min-width: 36px; width: 36px; height: 36px;"><div class="circle-inner" style="width: 30px; height: 30px; font-size: 0.65rem;">100%</div></div>
               <div><div style="font-weight: 600; color: var(--white); font-size: 0.85rem;">Hands-on & Real-World</div><div style="font-size: 0.7rem; color: var(--muted);">Practical approach</div></div>
             </div>
-            <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem; flex: 0 0 auto;">
               <div class="skill-circle circle-gold" style="--percentage:97; min-width: 36px; width: 36px; height: 36px;"><div class="circle-inner" style="width: 30px; height: 30px; font-size: 0.65rem;">97%</div></div>
               <div><div style="font-weight: 600; color: var(--white); font-size: 0.85rem;">International Delivery</div><div style="font-size: 0.7rem; color: var(--muted);">11+ countries</div></div>
             </div>
-            <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem; flex: 0 0 auto;">
               <div class="skill-circle circle-gold" style="--percentage:95; min-width: 36px; width: 36px; height: 36px;"><div class="circle-inner" style="width: 30px; height: 30px; font-size: 0.65rem;">95%</div></div>
-              <div><div style="font-weight: 600; color: var(--white); font-size: 0.85rem;">Corporate Training</div><div style="font-size: 0.7rem; color: var(--muted);">19 years exp.</div></div>
+              <div><div style="font-weight: 600; color: var(--white); font-size: 0.85rem;">Corporate Training</div><div style="font-size: 0.7rem; color: var(--muted);">15 years exp.</div></div>
             </div>
          </div>
          
@@ -4268,7 +4274,7 @@
          </div>
          <h3 class="card-title">React + Node.js + MongoDB (MERN)</h3>
          <div class="card-tags">
-           <span class="tag-online">Online</span>
+           <span class="tag-online">Offline</span>
            <span class="tag-dur">6 Days</span>
            <span class="tag-q">H2 2021</span>
          </div>
@@ -4286,7 +4292,7 @@
           </div>
           <h3 class="card-title">Data Analytics<br><span class="card-subtitle">Python + Power BI</span></h3>
          <div class="card-tags">
-           <span class="tag-online">Online</span>
+           <span class="tag-online">Offline</span>
            <span class="tag-dur">5 Days</span>
            <span class="tag-q">H2 2022</span>
          </div>
