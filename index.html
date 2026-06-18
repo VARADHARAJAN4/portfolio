@@ -219,14 +219,14 @@
     .nav-dropdown-menu {
       display: none;
       position: absolute;
-      top: 0;
-      left: 100%;
+      top: calc(100% + 0.5rem);
+      left: 0;
       background: var(--bg2);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 0.5rem 0;
-      min-width: 180px;
-      max-height: calc(100vh - 2rem);
+      min-width: 100%;
+      max-height: calc(50vh);
       overflow-y: auto;
       overscroll-behavior: contain;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
