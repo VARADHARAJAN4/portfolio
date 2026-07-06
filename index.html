@@ -2133,6 +2133,134 @@
       font-style: italic;
     }
 
+    .project-notice {
+      margin: 1.5rem 0 2rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--gold);
+      background: linear-gradient(90deg, rgba(201, 168, 76, 0.18), rgba(201, 168, 76, 0.06));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      color: var(--white);
+    }
+
+    .project-notice__pill {
+      background: var(--gold);
+      color: var(--bg);
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .recent-projects-section {
+      margin: 2rem 0 3rem;
+    }
+
+    .recent-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .recent-project-card {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      padding: 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--bg3) 0%, rgba(201, 168, 76, 0.05) 100%);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+
+    .recent-project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+      box-shadow: 0 16px 35px rgba(201, 168, 76, 0.15);
+    }
+
+    .recent-project-card.featured {
+      border-color: var(--gold);
+      box-shadow: 0 16px 35px rgba(201, 168, 76, 0.16);
+    }
+
+    .recent-project-card__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .recent-project-card__order {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.25rem 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .recent-project-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.08rem;
+      color: var(--white);
+      margin: 0;
+      line-height: 1.35;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .recent-project-card p {
+      color: var(--text-secondary-light);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .recent-project-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .recent-project-card__repo {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+      line-height: 1.35;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+
+    .recent-project-card__tags span {
+      background: var(--gold-dim);
+      color: var(--gold);
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      border: 1px solid var(--border);
+    }
+
+
     .project-showcase {
       margin-top: 2rem;
       padding-top: 2rem;
@@ -4383,101 +4511,183 @@
     </div>
   </section>
 
+  <div class="project-notice" role="status" aria-live="polite">
+    <span class="project-notice__pill">New</span>
+    <span>My recent AIML and Data Analytics projects.</span>
+    <a href="#projects" class="project-notice-link">View Projects →</a>
+  </div>
+
+  <style>
+    /* Keep notification visible on initial load */
+    .project-notice {
+      position: fixed;
+      top: 0.75rem;
+      left: 260px;
+      z-index: 1200;
+      margin: 0;
+      padding: 0.07rem 0.28rem;
+      border: 1px solid rgba(201, 168, 76, 0.22);
+      background: rgba(19, 19, 32, 0.72);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+      color: var(--white);
+      max-width: calc(100vw - 290px);
+      transform: translateZ(0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    body.menu-hidden .project-notice {
+      left: 1.5rem;
+      max-width: calc(100vw - 3rem);
+    }
+
+    @media (max-width: 768px) {
+      .project-notice {
+        left: 0.9rem;
+        right: 0.9rem;
+        max-width: none;
+      }
+    }
+
+    .project-notice__pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.7rem;
+      border-radius: 999px;
+    }
+
+    .project-notice-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.25rem 0.5rem;
+      border-radius: 10px;
+      background: var(--gold-dim);
+      border: 0.5px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .project-notice-link:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    /* Prevent hero/sections from hiding behind the fixed notice */
+    #hero {
+      padding-top: 4.2rem;
+    }
+  </style>
+
+
+
+
+
+
   <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-label">Recent Achievements</div>
-    <h2 class="section-title">AIML <em>Projects</em></h2>
+    <div class="section-label">Recent Project Achievements</div>
+    <h2 class="section-title">AIML & Data Analytics <em>Projects</em></h2>
     <p class="section-subtitle">Cutting-edge AI/ML and Data Analytics projects showcasing practical implementation of advanced technologies.</p>
 
-    <div style="margin-top: 3rem;">
-      <!-- AI Agent Projects -->
-      <div style="margin-bottom: 3.5rem;">
-        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem;">
-          <span style="font-size: 1.5rem;">🤖</span>AI Agent Projects
-        </h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-          <!-- Project 1 -->
-          <div class="proj-card fade-in" style="background: linear-gradient(135deg, var(--bg3) 0%, rgba(201, 168, 76, 0.03) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden;">
-            <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--gold), var(--gold-dim)); opacity: 0; transition: opacity 0.3s;" class="proj-accent"></div>
-            <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 1.5rem;">
-              <div>
-                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin: 0 0 0.5rem 0;">AI Agent: Conversion Hub</h4>
-                <p style="font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin: 0;">AI Agent · Automation</p>
-              </div>
-              <span style="font-size: 1.8rem;">🚀</span>
-            </div>
-            <p style="color: var(--text-secondary-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">An intelligent AI-powered agent designed for seamless conversion optimization and intelligent automation workflows.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem;">
-              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Python</span>
-              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">AI/ML</span>
-              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Automation</span>
-            </div>
-            <a href="https://github.com/VARADHARAJAN4/AI-Agent-Project---Conversion-Hub.git" target="_blank" class="btn btn-outline" style="width: 100%; text-align: center; justify-content: center;">View Repository →</a>
+    <!-- Merged Recent GitHub Highlights (as part of AIML Projects) -->
+    <div class="recent-projects-section" style="margin-top: 2rem;">
+      <!-- <div class="section-label">Recent GitHub Highlights</div> -->
+      <!-- <h2 class="section-title" style="margin-bottom: 1.5rem; font-size: clamp(1.6rem, 3vw, 2.3rem);">Recent <em>Projects</em></h2> -->
+      <div class="recent-projects-grid">
+        <a class="recent-project-card featured" href="https://github.com/VARADHARAJAN4/AI_Powered_Data_Content_Processing--Stage1-AI_Detector_Agent.git" target="_blank" rel="noreferrer">
+          <div class="recent-project-card__top">
+            <h4>AI Powered Data Content Processing Stage-1 : AI Detector Agent</h4>
+            <span class="recent-project-card__order">00</span>
           </div>
+          <p>AI-powered data content processing stage with automated detection to improve data quality and decision confidence.</p>
+          <p class="recent-project-card__repo">Repo: https://github.com/VARADHARAJAN4/AI_Powered_Data_Content_Processing--Stage1-AI_Detector_Agent</p>
+          <div class="recent-project-card__tags">
+            <span>AI</span>
+            <span>Data Processing</span>
+          </div>
+        </a>
 
-          <!-- Project 2 -->
-          <div class="proj-card fade-in" style="background: linear-gradient(135deg, var(--bg3) 0%, rgba(201, 168, 76, 0.03) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden;">
-            <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--gold), var(--gold-dim)); opacity: 0; transition: opacity 0.3s;" class="proj-accent"></div>
-            <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 1.5rem;">
-              <div>
-                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin: 0 0 0.5rem 0;">AI-Powered Data Cleaning</h4>
-                <p style="font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin: 0;">AI Agent · Data Analytics</p>
-              </div>
-              <span style="font-size: 1.8rem;">🧹</span>
-            </div>
-            <p style="color: var(--text-secondary-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Intelligent automated data cleaning process leveraging AI agents to detect, validate, and cleanse data anomalies at scale.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem;">
-              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Python</span>
-              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">AI Agent</span>
-              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Data Cleaning</span>
-            </div>
-            <a href="https://github.com/VARADHARAJAN4/AI-Agent-Data-Analytics-Project--Automated-Data-Cleaning-Process-.git" target="_blank" class="btn btn-outline" style="width: 100%; text-align: center; justify-content: center;">View Repository →</a>
+        <a class="recent-project-card featured" href="https://github.com/VARADHARAJAN4/CyberGuard_Project.git" target="_blank" rel="noreferrer">
+          <div class="recent-project-card__top">
+            <h4>CyberGuard Project</h4>
+            <span class="recent-project-card__order">01</span>
           </div>
-        </div>
-      </div>
+          <p>Cybersecurity-focused project highlighting practical protection strategies and secure system design.</p>
+          <p class="recent-project-card__repo">Repo: https://github.com/VARADHARAJAN4/CyberGuard_Project</p>
+          <div class="recent-project-card__tags">
+            <span>Cybersecurity</span>
+            <span>Security</span>
+          </div>
+        </a>
 
-      <!-- Data Analytics Projects -->
-      <div>
-        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem;">
-          <span style="font-size: 1.5rem;">📊</span>Data Analytics Projects
-        </h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-          <!-- Project 3 -->
-          <div class="proj-card fade-in" style="background: linear-gradient(135deg, var(--bg3) 0%, rgba(201, 168, 76, 0.03) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden;">
-            <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--gold), var(--gold-dim)); opacity: 0; transition: opacity 0.3s;" class="proj-accent"></div>
-            <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 1.5rem;">
-              <div>
-                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin: 0 0 0.5rem 0;">Vietnam Weather Analysis</h4>
-                <p style="font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin: 0;">Data Analysis · Visualization</p>
-              </div>
-              <span style="font-size: 1.8rem;">🌤️</span>
-            </div>
-            <p style="color: var(--text-secondary-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Comprehensive data analysis of Vietnam's weather patterns with advanced visualizations and predictive insights using Python.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem;">
-              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Python</span>
-              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Pandas</span>
-              <span style="background: var(--gold-dim); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; border: 1px solid var(--border);">Visualization</span>
-            </div>
-            <a href="https://github.com/VARADHARAJAN4/Data_Analysis_Vietnam_weather_Analysis.git" target="_blank" class="btn btn-outline" style="width: 100%; text-align: center; justify-content: center;">View Repository →</a>
+
+        <a class="recent-project-card" href="https://github.com/VARADHARAJAN4/AI-Agent-Data-Analytics-Project--Automated-Data-Cleaning-Process-.git" target="_blank" rel="noreferrer">
+          <div class="recent-project-card__top">
+            <h4>AI Agent Data Cleaning</h4>
+            <span class="recent-project-card__order">02</span>
           </div>
-        </div>
+          <p>Automated data cleaning workflow powered by AI agents to detect anomalies and improve data quality.</p>
+          <p class="recent-project-card__repo">Repo: https://github.com/VARADHARAJAN4/AI-Agent-Data-Analytics-Project--Automated-Data-Cleaning-Process-</p>
+          <div class="recent-project-card__tags">
+            <span>AI Agent</span>
+            <span>Data Cleaning</span>
+          </div>
+        </a>
+
+        <a class="recent-project-card" href="https://github.com/VARADHARAJAN4/AI-Agent-Project---Conversion-Hub.git" target="_blank" rel="noreferrer">
+          <div class="recent-project-card__top">
+            <h4>Conversion Hub</h4>
+            <span class="recent-project-card__order">03</span>
+          </div>
+          <p>Intelligent automation platform designed to streamline conversion processes with AI-driven workflows.</p>
+          <p class="recent-project-card__repo">Repo: https://github.com/VARADHARAJAN4/AI-Agent-Project---Conversion-Hub</p>
+          <div class="recent-project-card__tags">
+            <span>AI Agent</span>
+            <span>Automation</span>
+          </div>
+        </a>
+
+        <a class="recent-project-card" href="https://github.com/VARADHARAJAN4/Data_Analysis_Vietnam_weather_Analysis.git" target="_blank" rel="noreferrer">
+          <div class="recent-project-card__top">
+            <h4>Vietnam Weather Analysis</h4>
+            <span class="recent-project-card__order">04</span>
+          </div>
+          <p>Weather data analysis project for Vietnam with visual insights and analytical storytelling.</p>
+          <p class="recent-project-card__repo">Repo: https://github.com/VARADHARAJAN4/Data_Analysis_Vietnam_weather_Analysis</p>
+          <div class="recent-project-card__tags">
+            <span>Data Analysis</span>
+            <span>Visualization</span>
+          </div>
+        </a>
+
+        <a class="recent-project-card" href="https://github.com/VARADHARAJAN4/My_AI_Agents.git" target="_blank" rel="noreferrer">
+          <div class="recent-project-card__top">
+            <h4>My AI Agents</h4>
+            <span class="recent-project-card__order">05</span>
+          </div>
+          <p>Collection of AI agent experiments and reusable concepts for practical automation use cases.</p>
+          <p class="recent-project-card__repo">Repo: https://github.com/VARADHARAJAN4/My_AI_Agents</p>
+          <div class="recent-project-card__tags">
+            <span>AI Agents</span>
+            <span>Automation</span>
+          </div>
+        </a>
       </div>
     </div>
 
-    <style>
-      .proj-card {
-        cursor: default;
-      }
-      .proj-card:hover {
-        transform: translateY(-8px);
-        border-color: var(--gold);
-        box-shadow: 0 20px 50px rgba(201, 168, 76, 0.15);
-      }
-      .proj-card:hover .proj-accent {
-        opacity: 1 !important;
-      }
-    </style>
-  </section>
+    <div style="margin-top: 3rem;">
+
 
   <!-- CERTIFICATIONS -->
   <section id="certs">
@@ -4652,7 +4862,7 @@
         </div>
         <div class="award-body">
           <div class="award-description-col">
-            <p>Successfully guided numerous student teams(at Rajalakshmi Engineering college, Sona College, MGR janaki college, Aadhiparasakthi college, Vaagdevi college warangal Telangana, SR university, Vels Universoty, SNMV college coimbatore,.... ) in developing innovative software solutions and winning competitions from EY, Capgemini, Infosys, VOIS, and etc.</p>
+            <p>Successfully guided numerous student teams(at Rajalakshmi Engineering college, Sona College, MGR janaki college, Aadhiparasakthi college, Vaagdevi college warangal Telangana, SR university, Vels University, SNMV college coimbatore,.... ) in developing innovative software solutions and winning competitions from EY, Capgemini, Infosys, VOIS, and etc.</p>
           </div>
           <div class="award-image-col" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 450px; margin: 0 auto; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 12px; border: 1px solid var(--border);">
             <img src="testimonial%20photos/memories/online%20react%20.png" class="cert-img-expand" onclick="openImage(this)" alt="Online React Feedback" style="width: 100%; height: auto; border-radius: 4px;">
