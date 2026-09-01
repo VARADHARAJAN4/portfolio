@@ -65,16 +65,16 @@
     }
 
      body {
-       background: var(--bg);
-       color: var(--white);
-       font-family: 'Inter', sans-serif;
-       font-size: 19px;
-       line-height: 1.75;
-       overflow-x: hidden;
-       position: relative;
-        min-height: 100vh;
-        padding-left: calc(250px + 1rem);
-     }
+        background: var(--bg);
+        color: var(--white);
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        line-height: 1.75;
+        overflow-x: hidden;
+        position: relative;
+         min-height: 100vh;
+         padding-left: calc(250px + 1rem);
+      }
 
     /* NOISE OVERLAY */
     body::before {
@@ -102,31 +102,46 @@
     }
 
      /* NAV */
-     nav {
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 250px;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 2rem 1.5rem;
+        max-height: 100vh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(16px);
+        border-right: 1px solid var(--border);
+        transition: transform 0.4s var(--transition-base);
+        box-shadow: var(--shadow-sm);
+      }
+      
+      nav.scrolled {
+        background: rgba(10, 10, 15, 0.97);
+        box-shadow: var(--shadow-md);
+      }
+
+     .nav-overlay {
+       display: none;
        position: fixed;
-       top: 0;
-       left: 0;
-       bottom: 0;
-       width: 250px;
-       z-index: 100;
-       display: flex;
-       flex-direction: column;
-       align-items: flex-start;
-       justify-content: flex-start;
-       padding: 2rem 1.5rem;
-       max-height: 100vh;
-       overflow-y: auto;
-       overscroll-behavior: contain;
-       background: rgba(10, 10, 15, 0.95);
-       backdrop-filter: blur(16px);
-       border-right: 1px solid var(--border);
-       transition: all 0.4s var(--transition-base);
-       box-shadow: var(--shadow-sm);
+       inset: 0;
+       background: rgba(0, 0, 0, 0.5);
+       z-index: 99;
+       opacity: 0;
+       transition: opacity 0.4s var(--transition-base);
      }
-     
-     nav.scrolled {
-       background: rgba(10, 10, 15, 0.97);
-       box-shadow: var(--shadow-md);
+
+     .nav-overlay.active {
+       display: block;
+       opacity: 1;
      }
     
     .nav-logo {
@@ -147,18 +162,27 @@
       width: 100%;
     }
 
-    body.menu-hidden {
-      padding-left: 1rem;
-    }
+     body.menu-hidden {
+       padding-left: 0;
+     }
 
-    body.menu-hidden nav {
-      transform: translateX(calc(-100% - 1rem));
-    }
+     body.menu-hidden nav {
+       transform: translateX(-100%);
+     }
+
+     body.menu-open nav {
+       transform: translateX(0);
+     }
+
+     body.menu-open .nav-overlay {
+       display: block;
+       opacity: 1;
+     }
 
     .content-layout {
-      position: relative;
-      padding: 5rem 2cm 0 2cm;
-    }
+       position: relative;
+       padding: 5rem 1.5rem 0 1.5rem;
+     }
 
     .menu-toggle,
     #themeToggle {
@@ -280,16 +304,17 @@
     }
 
 /* HERO */
-#hero {
-  min-height: 100vh;
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-items: center;
-  gap: 3rem;
-  z-index: 20;
-  overflow: visible;
-}
+      #hero {
+        min-height: 100vh;
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: center;
+        gap: 2rem;
+        z-index: 20;
+        overflow: visible;
+        padding-top: 5rem;
+      }
 
     .hero-grid-bg {
       position: absolute;
@@ -521,10 +546,10 @@
       transform: translateY(-2px);
     }
 
-    /* SECTIONS */
-    section {
-      padding: 6rem 3rem;
-    }
+     /* SECTIONS */
+     section {
+       padding: 5rem 1.5rem;
+     }
 
      .section-label {
        font-family: 'DM Mono', monospace;
@@ -1157,11 +1182,21 @@
        background: var(--bg2);
      }
 
-     .training-4x3-grid {
-       max-width: 1400px;
-       margin: 2.5rem auto 0;
+     .international-impact-layout {
        display: grid;
-       grid-template-columns: repeat(3, 1fr);
+       grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.45fr);
+       gap: 2rem;
+       align-items: start;
+       margin: 2rem 0;
+     }
+
+     .training-4x3-grid {
+       grid-column: 1 / -1;
+       width: 100%;
+       max-width: 1400px;
+       margin: 0 auto;
+       display: grid;
+       grid-template-columns: repeat(3, minmax(0, 1fr));
        gap: 1.25rem;
      }
 
@@ -1364,8 +1399,12 @@
 
      /* RESPONSIVE 4x3 GRID */
      @media(max-width: 1200px) {
+       .international-impact-layout {
+         grid-template-columns: 1fr;
+       }
+
        .training-4x3-grid {
-         grid-template-columns: repeat(2, 1fr);
+         grid-template-columns: repeat(2, minmax(0, 1fr));
          gap: 1rem;
        }
      }
@@ -2795,33 +2834,34 @@
       color: var(--gold);
     }
 
-    /* SCROLL TO TOP */
-    #topBtn {
-      position: fixed;
-      bottom: 6.5rem;
-      right: 2rem;
-      width: 44px;
-      height: 44px;
-      background: var(--gold-dim);
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      transition: background 0.2s;
-    }
+     /* SCROLL TO TOP */
+     #topBtn {
+       position: fixed;
+       bottom: 5rem;
+       right: 1rem;
+       width: 40px;
+       height: 40px;
+       background: var(--gold-dim);
+       border: 1px solid var(--gold);
+       color: var(--gold);
+       font-size: 1.1rem;
+       cursor: pointer;
+       display: none;
+       align-items: center;
+       justify-content: center;
+       z-index: 200;
+       transition: background 0.2s;
+       border-radius: 50%;
+     }
 
-    #topBtn:hover {
-      background: var(--gold);
-      color: var(--bg);
-    }
+     #topBtn:hover {
+       background: var(--gold);
+       color: var(--bg);
+     }
 
-    #topBtn.show {
-      display: flex;
-    }
+     #topBtn.show {
+       display: flex;
+     }
 
     /* DIVIDER */
     .divider {
@@ -2832,26 +2872,63 @@
     }
 
     /* RESPONSIVE */
-    @media(max-width:768px) {
-      body {
-        padding-left: 0;
-      }
+     @media(max-width:768px) {
+       body {
+         padding-left: 0;
+       }
 
-      nav {
-        padding: 1rem 1.5rem;
-      }
+       body.menu-hidden nav {
+         transform: translateX(-100%);
+       }
 
-      .nav-links {
-        gap: 1rem;
-      }
+       body.menu-open nav {
+         transform: translateX(0);
+       }
 
-      .nav-links a {
-        font-size: 0.62rem;
-      }
+       nav {
+         transform: translateX(-100%);
+         width: 280px;
+         padding: 1.5rem 1.2rem;
+       }
 
-      section {
-        padding: 4rem 1.5rem;
-      }
+       .nav-links {
+         gap: 0.8rem;
+       }
+
+       .nav-links a {
+         font-size: 0.72rem;
+       }
+
+       .nav-logo {
+         font-size: 0.95rem;
+         margin-bottom: 1.5rem;
+       }
+
+       .nav-dropdown-menu {
+         position: static;
+         display: none;
+         background: transparent;
+         border: none;
+         box-shadow: none;
+         padding-left: 1rem;
+         max-height: none;
+       }
+
+       .nav-dropdown.open .nav-dropdown-menu {
+         display: block;
+       }
+
+       .nav-dropdown > a::after {
+         content: ' +';
+       }
+
+       .nav-dropdown.open > a::after {
+         content: ' −';
+       }
+
+       section {
+         padding: 4rem 1.25rem;
+       }
 
       #hero {
         display: block;
@@ -2877,19 +2954,37 @@
         transform: translateX(-50%);
         flex-direction: row;
         width: auto;
+        max-width: calc(100vw - 3rem);
         background: rgba(10, 10, 15, 0.85);
-        padding: 0.5rem 1.5rem;
+        padding: 0.5rem 1.2rem;
         border-radius: 30px;
         border: 1px solid var(--border);
         backdrop-filter: blur(10px);
+        gap: 0.5rem;
       }
 
       .hero-socials a {
         border: none;
         background: transparent;
         box-shadow: none;
-        width: 36px;
-        height: 36px;
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .stat {
+        text-align: center;
+      }
+
+      .stat-num {
+        font-size: clamp(1.8rem, 5vw, 2.8rem);
       }
 
       .about-grid {
@@ -3335,59 +3430,60 @@
         }
       }
      /* CHATBOT ASSISTANT */
-    #botBubble {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 60px;
-      height: 60px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 2000;
-      box-shadow: 0 10px 30px rgba(201,168,76,0.4);
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      animation: botPulse 2s infinite;
-      overflow: hidden;
-      border: 2px solid var(--gold);
-    }
-    #botBubble img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    #botBubble:hover {
-      transform: scale(1.1);
-    }
-    @keyframes botPulse {
-      0% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
-      70% { box-shadow: 0 0 0 15px rgba(201, 168, 76, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
-    }
-    #botWindow {
-      position: fixed;
-      bottom: 7rem;
-      right: 2rem;
-      width: 300px;
-      max-height: 480px;
-      background: rgba(10, 10, 15, 0.95);
-      backdrop-filter: blur(15px);
-      border: 1px solid var(--gold);
-      border-radius: 20px;
-      display: none;
-      flex-direction: column;
-      z-index: 2000;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-      overflow: hidden;
-      transform-origin: bottom right;
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    #botWindow.active {
-      display: flex;
-    }
+     #botBubble {
+       position: fixed;
+       bottom: 1.5rem;
+       right: 1rem;
+       width: 50px;
+       height: 50px;
+       background: var(--gold);
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       cursor: pointer;
+       z-index: 2000;
+       box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+       animation: botPulse 2s infinite;
+       overflow: hidden;
+       border: 2px solid var(--gold);
+     }
+     #botBubble img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+     }
+     #botBubble:hover {
+       transform: scale(1.1);
+     }
+     @keyframes botPulse {
+       0% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
+       70% { box-shadow: 0 0 0 12px rgba(201, 168, 76, 0); }
+       100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
+     }
+     #botWindow {
+       position: fixed;
+       bottom: 6rem;
+       right: 1rem;
+       width: calc(100vw - 2rem);
+       max-width: 300px;
+       max-height: 60vh;
+       background: rgba(10, 10, 15, 0.95);
+       backdrop-filter: blur(15px);
+       border: 1px solid var(--gold);
+       border-radius: 20px;
+       display: none;
+       flex-direction: column;
+       z-index: 2000;
+       box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+       overflow: hidden;
+       transform-origin: bottom right;
+       transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+     }
+     #botWindow.active {
+       display: flex;
+     }
     .bot-header {
       background: var(--gold);
       padding: 1rem 1.2rem;
@@ -3447,12 +3543,107 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-     .bot-btn:hover {
+      .bot-btn:hover {
+        background: var(--gold);
+        color: var(--bg);
+      }
+
+     /* PHOTO CAROUSEL */
+     .pg-carousel {
+       position: relative;
+       max-width: 1000px;
+       margin: 0 auto;
+     }
+
+     .pg-track {
+       overflow: hidden;
+       border-radius: 16px;
+       border: 1px solid var(--border);
+       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+     }
+
+     .pg-slides {
+       display: flex;
+       transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+     }
+
+     .pg-slide {
+       min-width: 100%;
+       height: 480px;
+       object-fit: cover;
+       object-position: center;
+     }
+
+     .pg-btn {
+       position: absolute;
+       top: 50%;
+       transform: translateY(-50%);
+       width: 46px;
+       height: 46px;
+       border-radius: 50%;
+       background: var(--gold-dim);
+       border: 1px solid var(--gold);
+       color: var(--gold);
+       font-size: 1.3rem;
+       cursor: pointer;
+       z-index: 10;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       transition: all 0.3s;
+     }
+
+     .pg-btn:hover {
        background: var(--gold);
        color: var(--bg);
      }
 
-    </style>
+     .pg-btn-prev {
+       left: -2rem;
+     }
+
+     .pg-btn-next {
+       right: -2rem;
+     }
+
+     .pg-counter {
+       text-align: center;
+       margin-top: 1.2rem;
+       font-family: 'DM Mono', monospace;
+       font-size: 0.75rem;
+       color: var(--muted);
+       letter-spacing: 2px;
+     }
+
+     .pg-dot {
+       width: 8px;
+       height: 8px;
+       border-radius: 50%;
+       background: var(--muted);
+       cursor: pointer;
+       transition: background 0.3s, transform 0.3s;
+     }
+
+     .pg-dot.active {
+       background: var(--gold);
+       transform: scale(1.4);
+     }
+
+     @media (max-width: 768px) {
+       .pg-slide {
+         height: 280px;
+       }
+
+       .pg-btn-prev {
+         left: 0.5rem;
+       }
+
+       .pg-btn-next {
+         right: 0.5rem;
+       }
+     }
+
+     </style>
 </head>
 
 <body>
@@ -3495,8 +3686,9 @@
     </div>
   </div>
 
-  <!-- NAV -->
-  <nav>
+   <!-- NAV -->
+   <div class="nav-overlay" id="navOverlay"></div>
+   <nav>
     <div class="nav-logo"></div>
     <ul class="nav-links">
       <li><a href="#hero"><b>Home</b></a></li>
@@ -4091,7 +4283,22 @@
          
        </div>
 
-    </div>
+       <div class="chart-grid-2 fade-in">
+         <div class="chart-container">
+           <div class="chart-title">📊 Skills Overview</div>
+           <div class="chart-wrapper">
+             <canvas id="skillsBarChart"></canvas>
+           </div>
+         </div>
+         <div class="chart-container">
+           <div class="chart-title">🎯 Skills Radar</div>
+           <div class="chart-wrapper">
+             <canvas id="skillsRadarChart"></canvas>
+           </div>
+         </div>
+       </div>
+
+     </div>
   </section>
 
   <!-- EXPERIENCE -->
@@ -4322,22 +4529,29 @@
   </section>
 
    <section id="international">  
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; margin-top: 2rem; margin-bottom: 2rem;">
+      <div class="international-impact-layout">
         <div>
           <div class="section-label">International Contributions</div>
-      <h2 class="section-title">Global <em>Training Impact</em></h2>
-      <p class="section-subtitle">Delivering world-class corporate training and technical education programs across multiple countries — bridging industry expertise with global learners.</p>
-    
+          <h2 class="section-title">Global <em>Training Impact</em></h2>
+          <p class="section-subtitle">Delivering world-class corporate training and technical education programs across multiple countries — bridging industry expertise with global learners.</p>
         </div>
-         <div class="chart-container fade-in" style="padding: 1rem;">
-           <div class="chart-wrapper" style="height: 260px; max-height: 320px; width: 80%; max-width: 500px;">
-             <canvas id="trainingByRegionChart"></canvas>
-           </div>
-         </div>
-      </div>
-      
-      <!-- New Design: 4x3 Card Grid -->
-      <div class="training-4x3-grid">
+
+        <div class="chart-grid-2 fade-in" style="max-width: 900px; margin: 0 auto;">
+          <div class="chart-container">
+            <div class="chart-title">🌍 Training by Region</div>
+            <div class="chart-wrapper">
+              <canvas id="trainingByRegionChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-container">
+            <div class="chart-title">📡 Training Mode</div>
+            <div class="chart-wrapper">
+              <canvas id="trainingModeChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="training-4x3-grid">
        <!-- Row 1 -->
        <div class="grid-4x3-card">
          <div class="card-flag-row">
@@ -4437,7 +4651,7 @@
           </div>
           <h3 class="card-title">Data Analytics<br><span class="card-subtitle">Python + Power BI</span></h3>
          <div class="card-tags">
-           <span class="tag-online">Offline</span>
+           <span class="tag-online">Online</span>
            <span class="tag-dur">5 Days</span>
            <span class="tag-q">H2 2022</span>
          </div>
@@ -4510,7 +4724,7 @@
          </div>
          <h3 class="card-title">Cloud Deployment<br><span class="card-subtitle">Render, PM2, GitHub Actions</span></h3>
          <div class="card-tags">
-           <span class="tag-online">Online</span>
+           <span class="tag-online">Offline</span>
            <span class="tag-dur">5 Days</span>
            <span class="tag-q">H2 2025</span>
          </div>
@@ -4522,9 +4736,7 @@
           
          </div>
         
-      </div>         
-        </div>
-        </div>   
+      </div>
     </div>
   </section>
 
@@ -4723,8 +4935,7 @@
       </div>
     </div>
 
-    <div style="margin-top: 3rem;">
-
+  </section>
 
   <!-- CERTIFICATIONS -->
   <section id="certs">
@@ -5186,7 +5397,6 @@
         learning outcomes across various domains including web development, AI, finance, healthcare, and more.</p>
 
     </div>
-  </section>
 
 <!-- PARTNERSHIPS -->
    <section id="partnerships">
@@ -5331,99 +5541,90 @@
    </section>
 
   <!-- PHOTO CAROUSEL -->
-  <section id="gallery" style="background: var(--bg3); padding: 6rem 3rem;">
+  <section id="gallery" class="gallery-section">
     <div class="section-label">Gallery</div>
     <h2 class="section-title">Moments &amp; <em>Memories</em></h2>
 
-    <div class="pg-carousel fade-in" style="position: relative; max-width: 1000px; margin: 0 auto;">
+    <div class="pg-carousel fade-in">
       <!-- Slides -->
-      <div class="pg-track" id="pgTrack"
-        style="overflow: hidden; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
-        <div class="pg-slides" id="pgSlides"
-          style="display: flex; transition: transform 0.55s cubic-bezier(0.77,0,0.18,1);">
-          <img class="pg-slide" src="testimonial%20photos/moment/20250122_100917.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Class Session 1">
-          <img class="pg-slide" src="testimonial%20photos/moment/20250122_101039.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Class Session 2">
-          <img class="pg-slide" src="testimonial%20photos/moment/20260207_015433pm%20(1).jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Session Feb 2026">
-          <img class="pg-slide" src="testimonial%20photos/moment/20260316_102454am~2.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Training Day 1">
-          <img class="pg-slide" src="testimonial%20photos/moment/20260316_104003am~2.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Training Day 2">
-          <img class="pg-slide" src="testimonial%20photos/moment/IMG_20250122_111340893.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Batch 2025">
-          <img class="pg-slide" src="testimonial%20photos/moment/IMG_5807~2.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Group Session">
-          <img class="pg-slide" src="testimonial%20photos/memories/Picture3.png" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Project Presentation">
-          <img class="pg-slide" src="testimonial%20photos/memories/WhatsApp%20Image%202026-04-14%20at%205.43.48%20AM%20(1).jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Recent Feedback">
-          <img class="pg-slide" src="testimonial%20photos/awards/award%209.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Award 9">
-          <img class="pg-slide" src="testimonial%20photos/awards/award%20q.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Award Q">
-          <!-- <img class="pg-slide" src="testimonial%20photos/awards/award0.jfif" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Award 0"> -->
-          <img class="pg-slide" src="testimonial%20photos/awards/award1.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Award 1">
-          <img class="pg-slide" src="testimonial%20photos/awards/award2.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Award 2">
-          <img class="pg-slide" src="testimonial%20photos/awards/award3.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Award 3">
-          <img class="pg-slide" src="testimonial%20photos/memories/class%201.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Class 1">
-          <img class="pg-slide" src="testimonial%20photos/memories/class%2011.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Class 11">
-          <img class="pg-slide" src="testimonial%20photos/memories/class%2013.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Class 13">
-          <img class="pg-slide" src="testimonial%20photos/memories/class%2021.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Class 21">
-          <img class="pg-slide" src="testimonial%20photos/memories/class%20312.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Class 312">
-          <img class="pg-slide" src="testimonial%20photos/memories/class%205.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Class 5">
-          <img class="pg-slide" src="testimonial%20photos/memories/class%208.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Class 8">
-          <img class="pg-slide" src="testimonial%20photos/memories/ey%201%20demo%20-%20Copy.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="EY Demo 1">
-          <img class="pg-slide" src="testimonial%20photos/memories/ey%202%20demo.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="EY Demo 2">
-          <img class="pg-slide" src="testimonial%20photos/memories/ey%20a.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="EY Demo A">
-          <img class="pg-slide" src="testimonial%20photos/memories/ey%20ss.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="EY Demo SS">
-          <img class="pg-slide" src="testimonial%20photos/memories/ey%20sss.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="EY Demo SSS">
-          <img class="pg-slide" src="testimonial%20photos/memories/ey%20st.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="EY Demo ST">
-          <img class="pg-slide" src="testimonial%20photos/memories/ey%20typeup%20with%20edunet%20foundation.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="EY Edunet">
-          <img class="pg-slide" src="testimonial%20photos/memories/group%20123.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Group 123">
-          <img class="pg-slide" src="testimonial%20photos/memories/group%202.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Group 2">
-          <img class="pg-slide" src="testimonial%20photos/memories/group%2023.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Group 23">
-          <img class="pg-slide" src="testimonial%20photos/memories/group%203.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Group 3">
-          <img class="pg-slide" src="testimonial%20photos/memories/group%204.JPG" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Group 4">
-          <img class="pg-slide" src="testimonial%20photos/memories/group%205.JPG" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Group 5">
-          <img class="pg-slide" src="testimonial%20photos/memories/group%206.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Group 6">
-          <img class="pg-slide" src="testimonial%20photos/memories/group%209.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Group 9">
-          <img class="pg-slide" src="testimonial%20photos/memories/group.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Group Photo 1">
-          <img class="pg-slide" src="testimonial%20photos/memories/group.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Group Photo 2">
-          <img class="pg-slide" src="testimonial%20photos/memories/iis1.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="IIS 1">
-          <img class="pg-slide" src="testimonial%20photos/memories/iis2.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="IIS 2">
-          <img class="pg-slide" src="testimonial%20photos/memories/online%203.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Online Session">
-          <img class="pg-slide" src="testimonial%20photos/memories/online%20react%20.png" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="React Online">
-          <img class="pg-slide" src="testimonial%20photos/memories/project%201.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Project 1">
-          <img class="pg-slide" src="testimonial%20photos/memories/project%202.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Project 2">
-          <img class="pg-slide" src="testimonial%20photos/memories/react%201.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="React Training 1">
-          <img class="pg-slide" src="testimonial%20photos/memories/react%202.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="React Training 2">
-          <img class="pg-slide" src="testimonial%20photos/awards/sona%20award.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Sona Award">
-          <img class="pg-slide" src="testimonial%20photos/memories/st%20demo.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Demo Session 1">
-          <img class="pg-slide" src="testimonial%20photos/memories/st%20demooo.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Demo Session 2">
-          <img class="pg-slide" src="testimonial%20photos/memories/stage%201.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Stage Presence 1">
-          <img class="pg-slide" src="testimonial%20photos/memories/stage%203.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Stage Presence 2">
-          <img class="pg-slide" src="testimonial%20photos/memories/stage%20class%203.JPG" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Stage Class 1">
-          <img class="pg-slide" src="testimonial%20photos/memories/stage%20class.jpg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Stage Class 2">
-          <img class="pg-slide" src="testimonial%20photos/memories/stu%20demo.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Student Demo">
-          <img class="pg-slide" src="testimonial%20photos/memories/w3.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Women Dev 1">
-          <img class="pg-slide" src="testimonial%20photos/memories/w4.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Women Dev 2">
-          <img class="pg-slide" src="testimonial%20photos/memories/warangal%201.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Warangal Session 1">
-          <img class="pg-slide" src="testimonial%20photos/memories/warangal2.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Warangal Session 2">
-          <img class="pg-slide" src="testimonial%20photos/memories/women%20dev%203.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Women Dev 3">
-          <img class="pg-slide" src="testimonial%20photos/memories/womens%20dev.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Women Dev 4">
-          <img class="pg-slide" src="testimonial%20photos/memories/womens%20dev2.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Women Dev 5">
-          <img class="pg-slide" src="testimonial%20photos/memories/womens.jpeg" style="min-width:100%; height:480px; object-fit:cover; object-position:center;" alt="Women Dev 6">
+      <div class="pg-track" id="pgTrack">
+        <div class="pg-slides" id="pgSlides">
+          <img class="pg-slide" src="testimonial%20photos/moment/20250122_100917.jpg" alt="Class Session 1">
+          <img class="pg-slide" src="testimonial%20photos/moment/20250122_101039.jpg" alt="Class Session 2">
+          <img class="pg-slide" src="testimonial%20photos/moment/20260207_015433pm%20(1).jpg" alt="Session Feb 2026">
+          <img class="pg-slide" src="testimonial%20photos/moment/20260316_102454am~2.jpg" alt="Training Day 1">
+          <img class="pg-slide" src="testimonial%20photos/moment/20260316_104003am~2.jpg" alt="Training Day 2">
+          <img class="pg-slide" src="testimonial%20photos/moment/IMG_20250122_111340893.jpg" alt="Batch 2025">
+          <img class="pg-slide" src="testimonial%20photos/moment/IMG_5807~2.jpg" alt="Group Session">
+          <img class="pg-slide" src="testimonial%20photos/memories/Picture3.png" alt="Project Presentation">
+          <img class="pg-slide" src="testimonial%20photos/memories/WhatsApp%20Image%202026-04-14%20at%205.43.48%20AM%20(1).jpeg" alt="Recent Feedback">
+          <img class="pg-slide" src="testimonial%20photos/awards/award%209.jpeg" alt="Award 9">
+          <img class="pg-slide" src="testimonial%20photos/awards/award%20q.jpeg" alt="Award Q">
+          <!-- <img class="pg-slide" src="testimonial%20photos/awards/award0.jfif" alt="Award 0"> -->
+          <img class="pg-slide" src="testimonial%20photos/awards/award1.jpeg" alt="Award 1">
+          <img class="pg-slide" src="testimonial%20photos/awards/award2.jpg" alt="Award 2">
+          <img class="pg-slide" src="testimonial%20photos/awards/award3.jpg" alt="Award 3">
+          <img class="pg-slide" src="testimonial%20photos/memories/class%201.jpg" alt="Class 1">
+          <img class="pg-slide" src="testimonial%20photos/memories/class%2011.jpg" alt="Class 11">
+          <img class="pg-slide" src="testimonial%20photos/memories/class%2013.jpg" alt="Class 13">
+          <img class="pg-slide" src="testimonial%20photos/memories/class%2021.jpg" alt="Class 21">
+          <img class="pg-slide" src="testimonial%20photos/memories/class%20312.jpg" alt="Class 312">
+          <img class="pg-slide" src="testimonial%20photos/memories/class%205.jpg" alt="Class 5">
+          <img class="pg-slide" src="testimonial%20photos/memories/class%208.jpeg" alt="Class 8">
+          <img class="pg-slide" src="testimonial%20photos/memories/ey%201%20demo%20-%20Copy.jpeg" alt="EY Demo 1">
+          <img class="pg-slide" src="testimonial%20photos/memories/ey%202%20demo.jpeg" alt="EY Demo 2">
+          <img class="pg-slide" src="testimonial%20photos/memories/ey%20a.jpeg" alt="EY Demo A">
+          <img class="pg-slide" src="testimonial%20photos/memories/ey%20ss.jpeg" alt="EY Demo SS">
+          <img class="pg-slide" src="testimonial%20photos/memories/ey%20sss.jpeg" alt="EY Demo SSS">
+          <img class="pg-slide" src="testimonial%20photos/memories/ey%20st.jpeg" alt="EY Demo ST">
+          <img class="pg-slide" src="testimonial%20photos/memories/ey%20typeup%20with%20edunet%20foundation.jpg" alt="EY Edunet">
+          <img class="pg-slide" src="testimonial%20photos/memories/group%20123.jpeg" alt="Group 123">
+          <img class="pg-slide" src="testimonial%20photos/memories/group%202.jpg" alt="Group 2">
+          <img class="pg-slide" src="testimonial%20photos/memories/group%2023.jpeg" alt="Group 23">
+          <img class="pg-slide" src="testimonial%20photos/memories/group%203.jpeg" alt="Group 3">
+          <img class="pg-slide" src="testimonial%20photos/memories/group%204.JPG" alt="Group 4">
+          <img class="pg-slide" src="testimonial%20photos/memories/group%205.JPG" alt="Group 5">
+          <img class="pg-slide" src="testimonial%20photos/memories/group%206.jpeg" alt="Group 6">
+          <img class="pg-slide" src="testimonial%20photos/memories/group%209.jpeg" alt="Group 9">
+          <img class="pg-slide" src="testimonial%20photos/memories/group.jpeg" alt="Group Photo 1">
+          <img class="pg-slide" src="testimonial%20photos/memories/group.jpg" alt="Group Photo 2">
+          <img class="pg-slide" src="testimonial%20photos/memories/iis1.jpeg" alt="IIS 1">
+          <img class="pg-slide" src="testimonial%20photos/memories/iis2.jpeg" alt="IIS 2">
+          <img class="pg-slide" src="testimonial%20photos/memories/online%203.jpeg" alt="Online Session">
+          <img class="pg-slide" src="testimonial%20photos/memories/online%20react%20.png" alt="React Online">
+          <img class="pg-slide" src="testimonial%20photos/memories/project%201.jpg" alt="Project 1">
+          <img class="pg-slide" src="testimonial%20photos/memories/project%202.jpeg" alt="Project 2">
+          <img class="pg-slide" src="testimonial%20photos/memories/react%201.jpeg" alt="React Training 1">
+          <img class="pg-slide" src="testimonial%20photos/memories/react%202.jpeg" alt="React Training 2">
+          <img class="pg-slide" src="testimonial%20photos/awards/sona%20award.jpg" alt="Sona Award">
+          <img class="pg-slide" src="testimonial%20photos/memories/st%20demo.jpeg" alt="Demo Session 1">
+          <img class="pg-slide" src="testimonial%20photos/memories/st%20demooo.jpeg" alt="Demo Session 2">
+          <img class="pg-slide" src="testimonial%20photos/memories/stage%201.jpg" alt="Stage Presence 1">
+          <img class="pg-slide" src="testimonial%20photos/memories/stage%203.jpg" alt="Stage Presence 2">
+          <img class="pg-slide" src="testimonial%20photos/memories/stage%20class%203.JPG" alt="Stage Class 1">
+          <img class="pg-slide" src="testimonial%20photos/memories/stage%20class.jpg" alt="Stage Class 2">
+          <img class="pg-slide" src="testimonial%20photos/memories/stu%20demo.jpeg" alt="Student Demo">
+          <img class="pg-slide" src="testimonial%20photos/memories/w3.jpeg" alt="Women Dev 1">
+          <img class="pg-slide" src="testimonial%20photos/memories/w4.jpeg" alt="Women Dev 2">
+          <img class="pg-slide" src="testimonial%20photos/memories/warangal%201.jpeg" alt="Warangal Session 1">
+          <img class="pg-slide" src="testimonial%20photos/memories/warangal2.jpeg" alt="Warangal Session 2">
+          <img class="pg-slide" src="testimonial%20photos/memories/women%20dev%203.jpeg" alt="Women Dev 3">
+          <img class="pg-slide" src="testimonial%20photos/memories/womens%20dev.jpeg" alt="Women Dev 4">
+          <img class="pg-slide" src="testimonial%20photos/memories/womens%20dev2.jpeg" alt="Women Dev 5">
+          <img class="pg-slide" src="testimonial%20photos/memories/womens.jpeg" alt="Women Dev 6">
         </div>
       </div>
 
       <!-- Prev / Next Buttons -->
-      <button onclick="pgMove(-1)"
-        style="position:absolute; top:50%; left:-2rem; transform:translateY(-50%); width:46px; height:46px; border-radius:50%; background:var(--gold-dim); border:1px solid var(--gold); color:var(--gold); font-size:1.3rem; cursor:pointer; z-index:10; display:flex; align-items:center; justify-content:center; transition: all 0.3s;"
-        onmouseover="this.style.background='var(--gold)'; this.style.color='var(--bg)';"
-        onmouseout="this.style.background='var(--gold-dim)'; this.style.color='var(--gold)';">‹</button>
-      <button onclick="pgMove(1)"
-        style="position:absolute; top:50%; right:-2rem; transform:translateY(-50%); width:46px; height:46px; border-radius:50%; background:var(--gold-dim); border:1px solid var(--gold); color:var(--gold); font-size:1.3rem; cursor:pointer; z-index:10; display:flex; align-items:center; justify-content:center; transition: all 0.3s;"
-        onmouseover="this.style.background='var(--gold)'; this.style.color='var(--bg)';"
-        onmouseout="this.style.background='var(--gold-dim)'; this.style.color='var(--gold)';">›</button>
+      <button onclick="pgMove(-1)" class="pg-btn pg-btn-prev" aria-label="Previous slide">‹</button>
+      <button onclick="pgMove(1)" class="pg-btn pg-btn-next" aria-label="Next slide">›</button>
 
       <!-- Counter -->
-      <div id="pgCounter"
-        style="text-align:center; margin-top:1.2rem; font-family:'DM Mono', monospace; font-size:0.75rem; color:var(--muted); letter-spacing:2px;">
+      <div id="pgCounter" class="pg-counter">
         1 / 63</div>
 
       <!-- Dots -->
-      <div id="pgDots" style="display:flex; justify-content:center; gap:0.4rem; margin-top:0.8rem; flex-wrap:wrap;">
+      <div id="pgDots" class="pg-dots" style="display:flex; justify-content:center; gap:0.4rem; margin-top:0.8rem; flex-wrap:wrap;">
       </div>
     </div>
   </section>
@@ -5516,63 +5717,6 @@
       });
     }
   </script>
-
-  <!-- EDUCATION -->
-  <section id="education">
-    <div class="section-label">Academic Background</div>
-    <h2 class="section-title">Education & <em>Academia</em></h2>
-    <div class="edu-grid">
-      <div class="edu-card fade-in">
-        <div class="edu-badge">In Progress</div>
-        <div class="edu-degree">MBA</div>
-        <div class="edu-dept">International Business</div>
-        <div class="edu-inst">Alagappa University, Karaikudi</div>
-        <div class="edu-year">Ongoing</div>
-      </div>
-      <div class="edu-card fade-in">
-        <div class="edu-badge">2008</div>
-        <div class="edu-degree">M.E</div>
-        <div class="edu-dept">Computer Science & Engineering</div>
-        <div class="edu-inst">B.S Abdur Rahman Crescent University · Anna University</div>
-        <div class="edu-year">July 2008</div>
-      </div>
-      <div class="edu-card fade-in">
-        <div class="edu-badge">2005</div>
-        <div class="edu-degree">B.Tech</div>
-        <div class="edu-dept">Information Technology</div>
-        <div class="edu-inst">Pallavan College of Engineering · Anna University</div>
-        <div class="edu-year">April 2005</div>
-      </div>
-      <div class="edu-card fade-in">
-        <div class="edu-badge">2002</div>
-        <div class="edu-degree">Diploma</div>
-        <div class="edu-dept">Computer Technology</div>
-        <div class="edu-inst">Pallavan Polytechnic, Kanchipuram · DOTE</div>
-        <div class="edu-year">April 2002</div>
-      </div>
-    </div>
-
-    <div style="margin-top:3rem;" class="fade-in">
-      <div class="section-label" style="margin-bottom:1rem;">Academic Teaching</div>
-      <div class="about-grid">
-        <div class="about-highlight">
-          <h4>🏫 Tagore Engineering College, Chennai</h4>
-          <p>Assistant Professor — Computer Science & Engineering. April 2008 to September 2011 (3ars).</p>
-        </div>
-<div class="about-highlight">
-           <h4>🏫 Lord Venkateshwara Engineering College, Kanchipuram</h4>
-           <p>Lecturer — Information Technology. June 2005 to July 2006 (1 year).</p>
-         </div>
-         <div class="about-highlight">
-           <h4>🏥 Medical & Allied Health Colleges</h4>
-           <p>Delivered programming language courses to Tagore Medical College (MBBS), Tagore Institute of Allied Health
-             Sciences, and Tagore Dental College.</p>
-         </div>
-       </div>
-     </div>
-    </section>
-
-
 
   </main>
 
@@ -5679,21 +5823,51 @@
     }
 
     const menuToggle = document.getElementById('menuToggle');
+    const navOverlay = document.getElementById('navOverlay');
 
     if (menuToggle) {
       const updateMenuIcon = () => {
-        const isHidden = body.classList.contains('menu-hidden');
-        menuToggle.textContent = isHidden ? '☰' : '×';
-        menuToggle.setAttribute('aria-expanded', String(!isHidden));
+        const isOpen = body.classList.contains('menu-open');
+        menuToggle.textContent = isOpen ? '✕' : '☰';
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        if (navOverlay) {
+          navOverlay.classList.toggle('active', isOpen);
+        }
       };
 
       updateMenuIcon();
 
       menuToggle.addEventListener('click', () => {
-        body.classList.toggle('menu-hidden');
+        const isOpen = body.classList.contains('menu-open');
+        if (isOpen) {
+          body.classList.remove('menu-open');
+          body.classList.add('menu-hidden');
+        } else {
+          body.classList.remove('menu-hidden');
+          body.classList.add('menu-open');
+        }
         updateMenuIcon();
       });
+
+      if (navOverlay) {
+        navOverlay.addEventListener('click', () => {
+          body.classList.remove('menu-open');
+          body.classList.add('menu-hidden');
+          updateMenuIcon();
+        });
+      }
     }
+
+    // Mobile dropdown toggle
+    document.querySelectorAll('.nav-dropdown > a').forEach(dropdownLink => {
+      dropdownLink.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const parent = dropdownLink.parentElement;
+          parent.classList.toggle('open');
+        }
+      });
+    });
 
      // TYPEWRITER
      const roles = [
