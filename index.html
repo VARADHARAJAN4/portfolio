@@ -1183,18 +1183,18 @@
      }
 
      .international-impact-layout {
-       display: grid;
-       grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.45fr);
-       gap: 2rem;
-       align-items: start;
        margin: 2rem 0;
      }
 
+     .international-impact-header {
+       max-width: 1100px;
+       margin: 0 auto 1.5rem;
+     }
+
      .training-4x3-grid {
-       grid-column: 1 / -1;
        width: 100%;
        max-width: 1400px;
-       margin: 0 auto;
+       margin: 2.5rem auto 0;
        display: grid;
        grid-template-columns: repeat(3, minmax(0, 1fr));
        gap: 1.25rem;
@@ -3361,9 +3361,9 @@
 .chart-container {
        background: var(--bg3);
        border: 1px solid var(--border);
-       border-radius: 16px;
-       padding: 1.5rem;
-       margin: 1rem 0;
+       border-radius: 14px;
+       padding: 0.8rem 0.8rem 0.7rem;
+       margin: 0.5rem 0;
        position: relative;
        overflow: hidden;
        transition: all 0.3s;
@@ -3382,7 +3382,25 @@
      .chart-wrapper {
        position: relative;
        max-width: 100%;
+       height: 150px;
        margin: 0 auto;
+     }
+
+     .mode-chart-card {
+       max-width: 360px;
+       margin-left: auto;
+       margin-right: auto;
+     }
+
+     .mode-chart-wrapper {
+       height: 155px;
+       max-width: 240px;
+     }
+
+     .chart-wrapper canvas {
+       width: 100% !important;
+       height: 100% !important;
+       display: block;
      }
 
      .chart-title {
@@ -3399,9 +3417,10 @@
 
      .chart-grid-2 {
        display: grid;
-       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-       gap: 1.5rem;
-       margin-top: 2rem;
+       grid-template-columns: repeat(2, minmax(180px, 0.72fr));
+       gap: 0.9rem;
+       max-width: 760px;
+       margin: 0 auto;
      }
 
      .chart-grid-3 {
@@ -3410,6 +3429,12 @@
        gap: 1.5rem;
        margin-top: 2rem;
      }
+
+      @media(max-width: 980px) {
+        .chart-grid-2 {
+          grid-template-columns: 1fr;
+        }
+      }
 
       @media(max-width: 768px) {
         .chart-grid-2,
@@ -4530,22 +4555,22 @@
 
    <section id="international">  
       <div class="international-impact-layout">
-        <div>
+        <div class="international-impact-header">
           <div class="section-label">International Contributions</div>
           <h2 class="section-title">Global <em>Training Impact</em></h2>
           <p class="section-subtitle">Delivering world-class corporate training and technical education programs across multiple countries — bridging industry expertise with global learners.</p>
         </div>
 
-        <div class="chart-grid-2 fade-in" style="max-width: 900px; margin: 0 auto;">
+        <div class="chart-grid-2 fade-in">
           <div class="chart-container">
             <div class="chart-title">🌍 Training by Region</div>
             <div class="chart-wrapper">
               <canvas id="trainingByRegionChart"></canvas>
             </div>
           </div>
-          <div class="chart-container">
+          <div class="chart-container mode-chart-card">
             <div class="chart-title">📡 Training Mode</div>
-            <div class="chart-wrapper">
+            <div class="chart-wrapper mode-chart-wrapper">
               <canvas id="trainingModeChart"></canvas>
             </div>
           </div>
@@ -6288,7 +6313,7 @@
         },
         options: {
           responsive: true,
-          maintainAspectRatio: true,
+          maintainAspectRatio: false,
           plugins: {
             legend: {
               position: 'bottom',
